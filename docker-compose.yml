@@ -1,0 +1,108 @@
+# SHOPZY — full local stack (API + web + MongoDB replica set + Redis)
+#
+#   docker compose up --build          start everything
+#   docker compose run --rm seed       load the Bhopal demo dataset
+#   docker compose down -v             stop and wipe volumes
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: shopzy-mongo
+    # A single-node replica set gives us transactions and change streams,
+    # matching the Atlas topology the app targets in production.
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: >
+        mongosh --quiet --eval "
+          try { rs.status().ok }
+          catch (e) { rs.initiate({_id:'rs0',members:[{_id:0,host:'mongo:27017'}]}).ok }
+        "
+      interval: 10s
+      timeout: 10s
+      retries: 12
+      start_period: 20s
+
+  redis:
+    image: redis:7-alpine
+    container_name: shopzy-redis
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: shopzy-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "4000"
+      API_PREFIX: /api/v1
+      CLIENT_ORIGIN: http://localhost:8080
+      MONGODB_URI: mongodb://mongo:27017/shopzy?replicaSet=rs0&directConnection=true
+      REDIS_URL: redis://redis:6379
+      # Override these before deploying anywhere real.
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-local-dev-access-secret-change-me-32chars}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-local-dev-refresh-secret-change-me-32chars}
+      BCRYPT_ROUNDS: "12"
+      STORAGE_DRIVER: local
+      UPLOAD_DIR: /app/uploads
+    volumes:
+      - uploads:/app/uploads
+    ports:
+      - "4000:4000"
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+      args:
+        VITE_API_URL: /api/v1
+    container_name: shopzy-web
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+
+  # One-shot seeding job: `docker compose run --rm seed`
+  seed:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    profiles: ["tools"]
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: mongodb://mongo:27017/shopzy?replicaSet=rs0&directConnection=true
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-local-dev-access-secret-change-me-32chars}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-local-dev-refresh-secret-change-me-32chars}
+      SEED_ADMIN_EMAIL: ${SEED_ADMIN_EMAIL:-admin@shopzy.in}
+      # Overridable so a real deployment never seeds the documented default;
+      # the seed script refuses to run with it when NODE_ENV=production.
+      SEED_ADMIN_PASSWORD: ${SEED_ADMIN_PASSWORD:?set SEED_ADMIN_PASSWORD before seeding}
+    entrypoint: ["node", "dist/seed/seed.js", "--force"]
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+volumes:
+  mongo-data:
+  redis-data:
+  uploads:

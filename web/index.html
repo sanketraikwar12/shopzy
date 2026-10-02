@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <title>SHOPZY — Discover local shops & compare prices near you</title>
+    <meta
+      name="description"
+      content="Find local businesses in Bhopal, compare real prices, check live opening hours, read verified reviews and call or navigate in one tap."
+    />
+    <link rel="canonical" href="https://shopzy.in/" />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SHOPZY" />
+    <meta property="og:title" content="SHOPZY — Discover local shops & compare prices" />
+    <meta property="og:description" content="Compare prices across nearby shops. Verified listings, live hours and real reviews." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Structured data: helps Google render a rich result for the site itself -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "SHOPZY",
+        "url": "https://shopzy.in/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://shopzy.in/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+    <!-- Inline theme initializer to prevent theme flicker -->
+    <script>
+      (function() {
+        try {
+          var t = localStorage.getItem('shopzy.theme');
+          if (t) {
+            var parsed = JSON.parse(t);
+            if (parsed && parsed.state && parsed.state.theme === 'dark') {
+              document.documentElement.classList.add('dark');
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

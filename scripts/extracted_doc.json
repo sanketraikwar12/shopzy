@@ -1,0 +1,2511 @@
+[
+  {
+    "index": 0,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 1,
+    "type": "p",
+    "text": "PROJECT SYNOPSIS",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "PROJECT SYNOPSIS",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": 24.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 3,
+    "type": "p",
+    "text": "SHOPZY",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "SHOPZY",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": 18.0,
+        "font_color": "0A4FA3"
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "type": "p",
+    "text": "Local Business Discovery & Price Comparison Platform",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Local Business Discovery & Price Comparison Platform",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": 14.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 6,
+    "type": "p",
+    "text": "BACHELOR OF TECHNOLOGY",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "BACHELOR OF TECHNOLOGY",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": 14.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "type": "p",
+    "text": "Computer Science & Engineering",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Computer Science & Engineering",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 16.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 8,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 9,
+    "type": "p",
+    "text": "SUBMITTED BY",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "SUBMITTED BY",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "type": "tbl",
+    "rows": 3,
+    "cols": 2,
+    "data": [
+      [
+        "Name",
+        "Roll No."
+      ],
+      [
+        "Sanket Raikwar",
+        "2023BTCSE022"
+      ],
+      [
+        "Arendra rajput",
+        "2023BTCSE0"
+      ]
+    ]
+  },
+  {
+    "index": 11,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 12,
+    "type": "p",
+    "text": "",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 13,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "type": "p",
+    "text": "ABSTRACT",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "ABSTRACT",
+        "bold": true,
+        "italic": null,
+        "underline": true,
+        "font_size": 14.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "type": "p",
+    "text": "Shopzy is a full-stack, production-grade web application that addresses the everyday problem faced by urban consumers — the inability to quickly discover nearby local shops and compare the prices they charge for the same item. Consumers currently rely on word-of-mouth, physical visits, or fragmented social-media posts to locate shops and assess whether a price is fair. There is no unified digital channel that combines shop discovery, real-time price transparency, and actionable contact options in a single interface.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Shopzy is a full-stack, production-grade web application that addresses the everyday problem faced by urban consumers — the inability to quickly discover nearby local shops and compare the prices they charge for the same item. Consumers currently rely on word-of-mouth, physical visits, or fragmented social-media posts to locate shops and assess whether a price is fair. There is no unified digital channel that combines shop discovery, real-time price transparency, and actionable contact options in a single interface.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 16,
+    "type": "p",
+    "text": "Shopzy solves this by providing a geospatial search engine that locates shops within a user-defined radius, ranks them by a composite relevance score, and — critically — allows a user to search by item name (e.g., \"Haircut\", \"1 kg Basmati rice\") and receive a ranked list of nearby shops with that item's price, from cheapest to most expensive, together with computed savings over the category average.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Shopzy solves this by providing a geospatial search engine that locates shops within a user-defined radius, ranks them by a composite relevance score, and — critically — allows a user to search by item name (e.g., \"Haircut\", \"1 kg Basmati rice\") and receive a ranked list of nearby shops with that item's price, from cheapest to most expensive, together with computed savings over the category average.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 17,
+    "type": "p",
+    "text": "The platform serves three actor types: Customers (discover, compare, review), Shop Owners (list and manage their business, publish a price list, track analytics), and Administrators (verify shops, moderate content, monitor platform health). The backend is a Node.js/Express REST API written in TypeScript, backed by MongoDB with a 2dsphere geospatial index, and accelerated by a Redis cache layer. The frontend is a React 18 single-page application built with Vite and styled with Tailwind CSS. The entire stack is containerised with Docker, enforces strict security practices aligned to the OWASP Top 10, and ships with 89 automated integration tests.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "The platform serves three actor types: Customers (discover, compare, review), Shop Owners (list and manage their business, publish a price list, track analytics), and Administrators (verify shops, moderate content, monitor platform health). The backend is a Node.js/Express REST API written in TypeScript, backed by MongoDB with a 2dsphere geospatial index, and accelerated by a Redis cache layer. The frontend is a React 18 single-page application built with Vite and styled with Tailwind CSS. The entire stack is containerised with Docker, enforces strict security practices aligned to the OWASP Top 10, and ships with 89 automated integration tests.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 18,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 19,
+    "type": "p",
+    "text": "MOTIVATION",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "MOTIVATION",
+        "bold": true,
+        "italic": null,
+        "underline": true,
+        "font_size": 14.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 20,
+    "type": "p",
+    "text": "The informal retail economy of Indian cities is large and vibrant, yet almost entirely invisible online. A kirana store, a salon, a tiffin service, or a hardware shop rarely has a website, an accurate Google Business profile, or any public price list. Consumers therefore cannot comparison-shop before they leave their homes, and small business owners have no affordable channel to advertise their prices or promotions to a local audience.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "The informal retail economy of Indian cities is large and vibrant, yet almost entirely invisible online. A kirana store, a salon, a tiffin service, or a hardware shop rarely has a website, an accurate Google Business profile, or any public price list. Consumers therefore cannot comparison-shop before they leave their homes, and small business owners have no affordable channel to advertise their prices or promotions to a local audience.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 21,
+    "type": "p",
+    "text": "Key pain points motivating this project:",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Key pain points motivating this project:",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 22,
+    "type": "p",
+    "text": "•  Price opacity. The same commodity — a litre of milk, a haircut, a cylinder refill — can vary 30–50% in price between shops 500 metres apart. Consumers have no tool to surface this variation.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "•  Price opacity.",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": " The same commodity — a litre of milk, a haircut, a cylinder refill — can vary 30–50% in price between shops 500 metres apart. Consumers have no tool to surface this variation.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 23,
+    "type": "p",
+    "text": "•  Discovery friction. Existing map applications show location but not opening hours, current offers, or price lists. Reaching a shop's contact details requires several navigational steps.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "•  Discovery friction.",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": " Existing map applications show location but not opening hours, current offers, or price lists. Reaching a shop's contact details requires several navigational steps.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 24,
+    "type": "p",
+    "text": "•  No trust layer. There is no platform specific to local businesses where verified reviews, ratings, and owner-replied feedback accumulate to build consumer trust.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "•  No trust layer.",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": " There is no platform specific to local businesses where verified reviews, ratings, and owner-replied feedback accumulate to build consumer trust.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 25,
+    "type": "p",
+    "text": "•  Digital exclusion of small businesses. Building even a basic website is beyond the budget and skill set of many micro-business owners. A platform where listing, updating a price list, and tracking customer engagement requires only a smartphone reduces this barrier.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "•  Digital exclusion of small businesses.",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": " Building even a basic website is beyond the budget and skill set of many micro-business owners. A platform where listing, updating a price list, and tracking customer engagement requires only a smartphone reduces this barrier.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 26,
+    "type": "p",
+    "text": "\nThese factors together create a market gap: a hyperlocal, price-transparent, trust-enriched discovery platform tuned to the Indian urban context. Shopzy is an attempt to fill that gap with a technically rigorous implementation that can scale from a college prototype to a production service.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "\nThese factors together create a market gap: a hyperlocal, price-transparent, trust-enriched discovery platform tuned to the Indian urban context. Shopzy is an attempt to fill that gap with a technically rigorous implementation that can scale from a college prototype to a production service.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 27,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 28,
+    "type": "p",
+    "text": "LITERATURE REVIEW",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "LITERATURE REVIEW",
+        "bold": true,
+        "italic": null,
+        "underline": true,
+        "font_size": 14.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 29,
+    "type": "p",
+    "text": "The following table surveys existing systems and approaches relevant to local business discovery and price comparison, analysing their strengths and limitations:",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "The following table surveys existing systems and approaches relevant to local business discovery and price comparison, analysing their strengths and limitations:",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 30,
+    "type": "p",
+    "text": "Table 1: Comparison of Existing Systems and Approaches",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Table 1: Comparison of Existing Systems and Approaches",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 31,
+    "type": "tbl",
+    "rows": 9,
+    "cols": 4,
+    "data": [
+      [
+        "System / Method",
+        "Description",
+        "Pros",
+        "Cons"
+      ],
+      [
+        "Google Maps / Google Business Profile",
+        "General-purpose map with business listings; owners can post prices via attributes",
+        "Massive reach; trusted brand; accurate geolocation",
+        "No structured price list; price comparison impossible; dominated by large chains; local SME listings often incomplete"
+      ],
+      [
+        "JustDial / Sulekha",
+        "Indian local business directories; keyword search returns phone numbers and categories",
+        "Large database of Indian local businesses; free listing",
+        "No prices displayed; discovery is text-only; outdated listings; ad-heavy UX; no review trust mechanism"
+      ],
+      [
+        "Zomato / Swiggy",
+        "Full-featured food delivery with menus, ratings and ordering",
+        "End-to-end ordering; rich menu data; strong trust signals",
+        "Vertical-specific (food only); high commission; price shown is platform price, not walk-in price"
+      ],
+      [
+        "Amazon / Flipkart",
+        "E-commerce platforms with seller price comparison for manufactured goods",
+        "Reliable; structured data; transparent pricing",
+        "Online-only; irrelevant for unpackaged goods, services, or perishables sold by local shops"
+      ],
+      [
+        "Proximity-based Recommender Systems",
+        "Research models using collaborative filtering + geo-signals to recommend local POIs",
+        "Personalised; handles cold-start with popularity priors",
+        "Require large datasets; complex to deploy; no price data; real-time updates hard"
+      ],
+      [
+        "Haversine / PostGIS (Relational DB)",
+        "Traditional lat/lng distance calculation in relational databases",
+        "Simple; ACID compliant; well understood",
+        "Cannot perform radius-constrained distance-sorted retrieval in a single indexed pass; joins expensive at scale"
+      ],
+      [
+        "Elasticsearch geo_distance + full-text",
+        "Combines geospatial and full-text scoring in a single query",
+        "Best-in-class relevance + geo in one pass; fuzzy matching",
+        "Significant operational overhead; overkill for < 100k documents; requires a separate sync pipeline"
+      ],
+      [
+        "Shopzy (Proposed)",
+        "Unified discovery + price comparison using MongoDB 2dsphere + composite scoring, MERN stack",
+        "Integrated price transparency; Redis cache; RBAC; OWASP-hardened; 89 automated tests",
+        "Regex keyword search degrades beyond ~100k shops/city (requires Elasticsearch migration at scale)"
+      ]
+    ]
+  },
+  {
+    "index": 32,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 33,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 34,
+    "type": "p",
+    "text": "PROBLEM FORMULATION / OBJECTIVES",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "PROBLEM FORMULATION / OBJECTIVES",
+        "bold": true,
+        "italic": null,
+        "underline": true,
+        "font_size": 14.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 35,
+    "type": "p",
+    "text": "Problem Statement:",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Problem Statement:",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 36,
+    "type": "p",
+    "text": "Urban consumers lack a digital tool that simultaneously locates nearby local shops, displays their structured price lists, and enables direct price comparison for a specific item across multiple shops within a defined radius. Shop owners have no affordable, non-technical interface to list their business, publish prices, and engage with customer feedback.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Urban consumers lack a digital tool that simultaneously locates nearby local shops, displays their structured price lists, and enables direct price comparison for a specific item across multiple shops within a defined radius. Shop owners have no affordable, non-technical interface to list their business, publish prices, and engage with customer feedback.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 37,
+    "type": "p",
+    "text": "Objectives:",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Objectives:",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 38,
+    "type": "p",
+    "text": "1. Implement a geospatial shop discovery engine capable of searching within a configurable radius using MongoDB's 2dsphere index and the $geoNear aggregation stage, returning results sorted by a composite relevance score.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "1. ",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": "Implement a geospatial shop discovery engine capable of searching within a configurable radius using MongoDB's 2dsphere index and the $geoNear aggregation stage, returning results sorted by a composite relevance score.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 39,
+    "type": "p",
+    "text": "2. Build a price comparison module that, given an item name and user coordinates, unwinds all matching price entries across nearby shops and returns them ranked cheapest-first, with minimum/average/maximum statistics and per-shop savings computed in a single aggregation pipeline.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "2. ",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": "Build a price comparison module that, given an item name and user coordinates, unwinds all matching price entries across nearby shops and returns them ranked cheapest-first, with minimum/average/maximum statistics and per-shop savings computed in a single aggregation pipeline.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 40,
+    "type": "p",
+    "text": "3. Design a multi-role RBAC system supporting four roles (customer, shop owner, admin, super admin), with JWT-based authentication, refresh-token rotation with replay detection, and phone OTP verification.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "3. ",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": "Design a multi-role RBAC system supporting four roles (customer, shop owner, admin, super admin), with JWT-based authentication, refresh-token rotation with replay detection, and phone OTP verification.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 41,
+    "type": "p",
+    "text": "4. Develop a shop management interface for owners that includes price list CRUD, offer management, timezone-aware opening hours, image upload, and per-shop analytics (views, call clicks, direction requests, 30-day trend).",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "4. ",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": "Develop a shop management interface for owners that includes price list CRUD, offer management, timezone-aware opening hours, image upload, and per-shop analytics (views, call clicks, direction requests, 30-day trend).",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 42,
+    "type": "p",
+    "text": "5. Create an admin verification and moderation panel with a shop approval queue, user suspension controls, review moderation, and platform-level analytics including zero-result query tracking.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "5. ",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": "Create an admin verification and moderation panel with a shop approval queue, user suspension controls, review moderation, and platform-level analytics including zero-result query tracking.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 43,
+    "type": "p",
+    "text": "6. Implement a Redis-backed caching strategy that serves hot search queries in ~1 ms and automatically invalidates on any shop write, coordinated across multiple API replicas.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "6. ",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": "Implement a Redis-backed caching strategy that serves hot search queries in ~1 ms and automatically invalidates on any shop write, coordinated across multiple API replicas.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 44,
+    "type": "p",
+    "text": "7. Achieve a security posture that mitigates all OWASP Top 10 risks, including injection prevention via Zod + mongoSanitize, bcrypt-hashed passwords, replay-resistant refresh tokens, CSP/HSTS headers, and DPDP Act-compliant data export and erasure.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "7. ",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": "Achieve a security posture that mitigates all OWASP Top 10 risks, including injection prevention via Zod + mongoSanitize, bcrypt-hashed passwords, replay-resistant refresh tokens, CSP/HSTS headers, and DPDP Act-compliant data export and erasure.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 45,
+    "type": "p",
+    "text": "8. Deliver a responsive React SPA with route-level code splitting achieving an initial load of ≤ 101 kB (gzipped), skeleton loaders, optimistic toasts, accessible autocomplete, and Schema.org JSON-LD for SEO.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "8. ",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      },
+      {
+        "text": "Deliver a responsive React SPA with route-level code splitting achieving an initial load of ≤ 101 kB (gzipped), skeleton loaders, optimistic toasts, accessible autocomplete, and Schema.org JSON-LD for SEO.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 46,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 47,
+    "type": "p",
+    "text": "SOFTWARE / HARDWARE REQUIRED FOR PROPOSED WORK",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "SOFTWARE / HARDWARE REQUIRED FOR PROPOSED WORK",
+        "bold": true,
+        "italic": null,
+        "underline": true,
+        "font_size": 14.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 48,
+    "type": "p",
+    "text": "Software Requirements:",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Software Requirements:",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 49,
+    "type": "p",
+    "text": "Table 2: Software Requirements",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Table 2: Software Requirements",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 50,
+    "type": "tbl",
+    "rows": 22,
+    "cols": 3,
+    "data": [
+      [
+        "Component",
+        "Technology",
+        "Version"
+      ],
+      [
+        "Runtime",
+        "Node.js",
+        "20+ (tested on 22)"
+      ],
+      [
+        "Frontend Framework",
+        "React",
+        "18"
+      ],
+      [
+        "Frontend Build Tool",
+        "Vite",
+        "Latest"
+      ],
+      [
+        "Frontend Language",
+        "TypeScript",
+        "5.x"
+      ],
+      [
+        "CSS Framework",
+        "Tailwind CSS",
+        "v4"
+      ],
+      [
+        "Server State Management",
+        "TanStack Query",
+        "v5"
+      ],
+      [
+        "Client State Management",
+        "Zustand",
+        "v4"
+      ],
+      [
+        "Backend Framework",
+        "Express.js",
+        "4.x"
+      ],
+      [
+        "Backend Language",
+        "TypeScript",
+        "5.x"
+      ],
+      [
+        "Input Validation",
+        "Zod",
+        "3.x"
+      ],
+      [
+        "Database",
+        "MongoDB",
+        "7.x (replica set)"
+      ],
+      [
+        "ODM",
+        "Mongoose",
+        "8.x"
+      ],
+      [
+        "Cache / Rate Limiter",
+        "Redis",
+        "7.x"
+      ],
+      [
+        "Authentication",
+        "JSON Web Tokens (JWT)",
+        "—"
+      ],
+      [
+        "Password Hashing",
+        "bcrypt",
+        "cost factor 12"
+      ],
+      [
+        "Logging",
+        "Winston",
+        "3.x"
+      ],
+      [
+        "Testing",
+        "Jest + Supertest",
+        "—"
+      ],
+      [
+        "Containerisation",
+        "Docker + Docker Compose",
+        "—"
+      ],
+      [
+        "Web Server (Production)",
+        "nginx (Alpine)",
+        "—"
+      ],
+      [
+        "CI/CD",
+        "GitHub Actions",
+        "—"
+      ],
+      [
+        "Code Quality",
+        "ESLint + TypeScript strict",
+        "—"
+      ]
+    ]
+  },
+  {
+    "index": 51,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 52,
+    "type": "p",
+    "text": "Hardware Requirements (Development):",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Hardware Requirements (Development):",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 53,
+    "type": "p",
+    "text": "Table 3: Development Hardware Requirements",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Table 3: Development Hardware Requirements",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 54,
+    "type": "tbl",
+    "rows": 6,
+    "cols": 2,
+    "data": [
+      [
+        "Item",
+        "Minimum Specification"
+      ],
+      [
+        "Processor",
+        "Intel Core i5 / AMD Ryzen 5 or better"
+      ],
+      [
+        "RAM",
+        "8 GB (16 GB recommended)"
+      ],
+      [
+        "Storage",
+        "10 GB free (for Node, MongoDB binary, Docker images)"
+      ],
+      [
+        "Network",
+        "Broadband internet (for Atlas / npm)"
+      ],
+      [
+        "OS",
+        "Windows 10/11, macOS 12+, or Ubuntu 20.04+"
+      ]
+    ]
+  },
+  {
+    "index": 55,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 56,
+    "type": "p",
+    "text": "Hardware Requirements (Production / Deployment):",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Hardware Requirements (Production / Deployment):",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 57,
+    "type": "p",
+    "text": "Table 4: Production Hardware Requirements",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Table 4: Production Hardware Requirements",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 58,
+    "type": "tbl",
+    "rows": 5,
+    "cols": 2,
+    "data": [
+      [
+        "Component",
+        "Specification"
+      ],
+      [
+        "API Server",
+        "2 vCPU, 2 GB RAM per replica (horizontal scaling)"
+      ],
+      [
+        "MongoDB",
+        "Managed replica set (e.g., MongoDB Atlas M10)"
+      ],
+      [
+        "Redis",
+        "Managed instance (e.g., Redis Cloud, ElastiCache)"
+      ],
+      [
+        "CDN",
+        "Cloudflare or AWS CloudFront for static assets"
+      ]
+    ]
+  },
+  {
+    "index": 59,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 60,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 61,
+    "type": "p",
+    "text": "METHODOLOGY / PLANNING OF WORK",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "METHODOLOGY / PLANNING OF WORK",
+        "bold": true,
+        "italic": null,
+        "underline": true,
+        "font_size": 14.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 62,
+    "type": "p",
+    "text": "The project follows an iterative development approach structured across seven phases over twelve weeks. Each phase has clear deliverables and gates before the next phase begins.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "The project follows an iterative development approach structured across seven phases over twelve weeks. Each phase has clear deliverables and gates before the next phase begins.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 63,
+    "type": "p",
+    "text": "Phase 1 – Requirements & Design (Weeks 1–2)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Phase 1 – Requirements & Design (Weeks 1–2)",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 64,
+    "type": "p",
+    "text": "     •  Identify stakeholder groups (customer, owner, admin) and document use cases",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Identify stakeholder groups (customer, owner, admin) and document use cases",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 65,
+    "type": "p",
+    "text": "     •  Define data models (User, Shop, Review, Category, AnalyticsEvent)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Define data models (User, Shop, Review, Category, AnalyticsEvent)",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 66,
+    "type": "p",
+    "text": "     •  Design the REST API surface (versioned at /api/v1)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Design the REST API surface (versioned at /api/v1)",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 67,
+    "type": "p",
+    "text": "     •  Produce ER diagram, DFD Level 0 and Level 1, system architecture diagram",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Produce ER diagram, DFD Level 0 and Level 1, system architecture diagram",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 68,
+    "type": "p",
+    "text": "     •  Set up the monorepo with npm workspaces, ESLint, TypeScript strict config",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Set up the monorepo with npm workspaces, ESLint, TypeScript strict config",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 69,
+    "type": "p",
+    "text": "Phase 2 – Backend Core (Weeks 3–5)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Phase 2 – Backend Core (Weeks 3–5)",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 70,
+    "type": "p",
+    "text": "     •  Implement Mongoose schemas with all indexes (2dsphere, text, compound, TTL)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Implement Mongoose schemas with all indexes (2dsphere, text, compound, TTL)",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 71,
+    "type": "p",
+    "text": "     •  Build authentication service: register, login, refresh-token rotation, OTP, RBAC",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Build authentication service: register, login, refresh-token rotation, OTP, RBAC",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 72,
+    "type": "p",
+    "text": "     •  Implement search service: $geoNear + $facet aggregation pipeline, relevance scoring formula",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Implement search service: $geoNear + $facet aggregation pipeline, relevance scoring formula",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 73,
+    "type": "p",
+    "text": "     •  Implement shop service: CRUD, price list, offers, opening hours, image upload",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Implement shop service: CRUD, price list, offers, opening hours, image upload",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 74,
+    "type": "p",
+    "text": "     •  Connect Redis cache layer with TTL and prefix-based invalidation",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Connect Redis cache layer with TTL and prefix-based invalidation",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 75,
+    "type": "p",
+    "text": "     •  Apply security middleware chain: helmet, cors, hpp, mongoSanitize, Zod validators",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Apply security middleware chain: helmet, cors, hpp, mongoSanitize, Zod validators",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 76,
+    "type": "p",
+    "text": "Phase 3 – Admin & Analytics (Week 6)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Phase 3 – Admin & Analytics (Week 6)",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 77,
+    "type": "p",
+    "text": "     •  Build admin verification queue, user suspension, review moderation endpoints",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Build admin verification queue, user suspension, review moderation endpoints",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 78,
+    "type": "p",
+    "text": "     •  Implement AnalyticsEvent model with TTL index (180 days)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Implement AnalyticsEvent model with TTL index (180 days)",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 79,
+    "type": "p",
+    "text": "     •  Build per-shop analytics: views, call clicks, direction clicks, 30-day trend",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Build per-shop analytics: views, call clicks, direction clicks, 30-day trend",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 80,
+    "type": "p",
+    "text": "     •  Implement platform analytics: category distribution, zero-result queries, city stats",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Implement platform analytics: category distribution, zero-result queries, city stats",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 81,
+    "type": "p",
+    "text": "Phase 4 – Frontend Development (Weeks 7–9)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Phase 4 – Frontend Development (Weeks 7–9)",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 82,
+    "type": "p",
+    "text": "     •  Scaffold Vite + React 18 SPA with React Router (11 routes) and route guards",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Scaffold Vite + React 18 SPA with React Router (11 routes) and route guards",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 83,
+    "type": "p",
+    "text": "     •  Build UI components: SearchBar (debounced autocomplete), ShopCard, CategoryIcon, skeletons",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Build UI components: SearchBar (debounced autocomplete), ShopCard, CategoryIcon, skeletons",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 84,
+    "type": "p",
+    "text": "     •  Implement pages: Home, Search, Shop Detail, Price Compare, Auth, Owner Dashboard, Admin Panel",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Implement pages: Home, Search, Shop Detail, Price Compare, Auth, Owner Dashboard, Admin Panel",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 85,
+    "type": "p",
+    "text": "     •  Wire TanStack Query for all API calls with caching, background refetch, optimistic updates",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Wire TanStack Query for all API calls with caching, background refetch, optimistic updates",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 86,
+    "type": "p",
+    "text": "     •  Add Zustand stores for auth state, user location, and toast notifications",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Add Zustand stores for auth state, user location, and toast notifications",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 87,
+    "type": "p",
+    "text": "     •  Add Schema.org JSON-LD for SEO; responsive layout from 360 px upward",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Add Schema.org JSON-LD for SEO; responsive layout from 360 px upward",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 88,
+    "type": "p",
+    "text": "Phase 5 – Testing & Security Audit (Week 10)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Phase 5 – Testing & Security Audit (Week 10)",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 89,
+    "type": "p",
+    "text": "     •  Write 89 integration tests (auth, shops, reviews/admin, utils) with mongodb-memory-server",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Write 89 integration tests (auth, shops, reviews/admin, utils) with mongodb-memory-server",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 90,
+    "type": "p",
+    "text": "     •  Audit against OWASP Top 10; verify mitigation for each risk class",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Audit against OWASP Top 10; verify mitigation for each risk class",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 91,
+    "type": "p",
+    "text": "     •  Run npm audit; document and justify any accepted advisories",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Run npm audit; document and justify any accepted advisories",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 92,
+    "type": "p",
+    "text": "     •  Run typecheck and lint across the full monorepo",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Run typecheck and lint across the full monorepo",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 93,
+    "type": "p",
+    "text": "Phase 6 – Containerisation & CI (Week 11)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Phase 6 – Containerisation & CI (Week 11)",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 94,
+    "type": "p",
+    "text": "     •  Write multi-stage Dockerfiles for API (node:22-alpine, non-root user, dumb-init) and web (nginx)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Write multi-stage Dockerfiles for API (node:22-alpine, non-root user, dumb-init) and web (nginx)",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 95,
+    "type": "p",
+    "text": "     •  Configure docker-compose.yml with MongoDB replica set, Redis, seed service",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Configure docker-compose.yml with MongoDB replica set, Redis, seed service",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 96,
+    "type": "p",
+    "text": "     •  Set up GitHub Actions CI: lint → typecheck → test → audit → build → Trivy image scan",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Set up GitHub Actions CI: lint → typecheck → test → audit → build → Trivy image scan",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 97,
+    "type": "p",
+    "text": "     •  Produce seed dataset of Bhopal local businesses for demo",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Produce seed dataset of Bhopal local businesses for demo",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 98,
+    "type": "p",
+    "text": "Phase 7 – Documentation & Submission (Week 12)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Phase 7 – Documentation & Submission (Week 12)",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 99,
+    "type": "p",
+    "text": "     •  Write project report: introduction, literature review, system design, implementation, testing, conclusion",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Write project report: introduction, literature review, system design, implementation, testing, conclusion",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 100,
+    "type": "p",
+    "text": "     •  Produce all required diagrams (ER, DFD, use-case, sequence, deployment)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Produce all required diagrams (ER, DFD, use-case, sequence, deployment)",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 101,
+    "type": "p",
+    "text": "     •  Prepare synopsis and presentation slides",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "     •  Prepare synopsis and presentation slides",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 102,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 103,
+    "type": "p",
+    "text": "ANALYSIS MODELS",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "ANALYSIS MODELS",
+        "bold": true,
+        "italic": null,
+        "underline": true,
+        "font_size": 14.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 104,
+    "type": "p",
+    "text": "DATA FLOW DIAGRAM — Level 0 (Context Diagram)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "DATA FLOW DIAGRAM — Level 0 (Context Diagram)",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 105,
+    "type": "p",
+    "text": "",
+    "align": "CENTER (1)",
+    "drawings_count": 1,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 106,
+    "type": "p",
+    "text": "Figure 1: DFD Level 0 — Shopzy Context Diagram",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Figure 1: DFD Level 0 — Shopzy Context Diagram",
+        "bold": null,
+        "italic": true,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 107,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 108,
+    "type": "p",
+    "text": "DATA FLOW DIAGRAM — Level 1",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "DATA FLOW DIAGRAM — Level 1",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 109,
+    "type": "p",
+    "text": "",
+    "align": "CENTER (1)",
+    "drawings_count": 1,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 110,
+    "type": "p",
+    "text": "Figure 2: DFD Level 1 — Shopzy Internal Processes",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Figure 2: DFD Level 1 — Shopzy Internal Processes",
+        "bold": null,
+        "italic": true,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 111,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 112,
+    "type": "p",
+    "text": "ENTITY RELATIONSHIP DIAGRAM",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "ENTITY RELATIONSHIP DIAGRAM",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 113,
+    "type": "p",
+    "text": "",
+    "align": "CENTER (1)",
+    "drawings_count": 1,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 114,
+    "type": "p",
+    "text": "Figure 3: Entity Relationship Diagram — Shopzy Data Model",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Figure 3: Entity Relationship Diagram — Shopzy Data Model",
+        "bold": null,
+        "italic": true,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 115,
+    "type": "p",
+    "text": "Table 5: ER Diagram — Cardinality Summary",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "Table 5: ER Diagram — Cardinality Summary",
+        "bold": true,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 116,
+    "type": "tbl",
+    "rows": 8,
+    "cols": 3,
+    "data": [
+      [
+        "Relationship",
+        "Type",
+        "Enforced by"
+      ],
+      [
+        "User → Shop (owns)",
+        "1 : M",
+        "shop.ownerId"
+      ],
+      [
+        "User ↔ Shop (saves)",
+        "M : N",
+        "user.savedShops[]"
+      ],
+      [
+        "Shop → Review",
+        "1 : M",
+        "review.shopId"
+      ],
+      [
+        "User → Review",
+        "1 : M",
+        "review.userId"
+      ],
+      [
+        "(Shop, User) → Review",
+        "1 : 1",
+        "Unique compound index (shopId, userId)"
+      ],
+      [
+        "Category → Shop",
+        "1 : M",
+        "shop.basicInfo.category = category.slug"
+      ],
+      [
+        "Category → Category",
+        "1 : M",
+        "category.parentId (self-referencing)"
+      ]
+    ]
+  },
+  {
+    "index": 117,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 118,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 119,
+    "type": "p",
+    "text": "BIBLIOGRAPHY / REFERENCES",
+    "align": "CENTER (1)",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "BIBLIOGRAPHY / REFERENCES",
+        "bold": true,
+        "italic": null,
+        "underline": true,
+        "font_size": 14.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 120,
+    "type": "p",
+    "text": "(Written in IEEE format as per submission specifications.)",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "(Written in IEEE format as per submission specifications.)",
+        "bold": null,
+        "italic": true,
+        "underline": null,
+        "font_size": null,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 121,
+    "type": "p",
+    "text": "",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": []
+  },
+  {
+    "index": 122,
+    "type": "p",
+    "text": "[1]  MongoDB, Inc., \"MongoDB Manual — 2dsphere Indexes,\" MongoDB Documentation, 2024. [Online]. Available: https://www.mongodb.com/docs/manual/core/2dsphere/. [Accessed: Aug. 2026].",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[1]  MongoDB, Inc., \"MongoDB Manual — 2dsphere Indexes,\" MongoDB Documentation, 2024. [Online]. Available: https://www.mongodb.com/docs/manual/core/2dsphere/. [Accessed: Aug. 2026].",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 123,
+    "type": "p",
+    "text": "[2]  MongoDB, Inc., \"Aggregation Pipeline — $geoNear,\" MongoDB Documentation, 2024. [Online]. Available: https://www.mongodb.com/docs/manual/reference/operator/aggregation/geoNear/. [Accessed: Aug. 2026].",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[2]  MongoDB, Inc., \"Aggregation Pipeline — $geoNear,\" MongoDB Documentation, 2024. [Online]. Available: https://www.mongodb.com/docs/manual/reference/operator/aggregation/geoNear/. [Accessed: Aug. 2026].",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 124,
+    "type": "p",
+    "text": "[3]  O. Waart, \"JSON Web Token Best Practices,\" Auth0 Blog, 2023. [Online]. Available: https://auth0.com/blog/a-look-at-the-latest-draft-for-jwt-bcp/. [Accessed: Aug. 2026].",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[3]  O. Waart, \"JSON Web Token Best Practices,\" Auth0 Blog, 2023. [Online]. Available: https://auth0.com/blog/a-look-at-the-latest-draft-for-jwt-bcp/. [Accessed: Aug. 2026].",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 125,
+    "type": "p",
+    "text": "[4]  OWASP Foundation, \"OWASP Top Ten 2021,\" OWASP Documentation, 2021. [Online]. Available: https://owasp.org/www-project-top-ten/. [Accessed: Aug. 2026].",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[4]  OWASP Foundation, \"OWASP Top Ten 2021,\" OWASP Documentation, 2021. [Online]. Available: https://owasp.org/www-project-top-ten/. [Accessed: Aug. 2026].",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 126,
+    "type": "p",
+    "text": "[5]  M. E. S. Morais, V. A. Zipf, and J. K. Ramirez, \"Geospatial Indexing for Location-Based Services: A Survey,\" IEEE Transactions on Knowledge and Data Engineering, vol. 35, no. 4, pp. 3821–3840, Apr. 2023.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[5]  M. E. S. Morais, V. A. Zipf, and J. K. Ramirez, \"Geospatial Indexing for Location-Based Services: A Survey,\" IEEE Transactions on Knowledge and Data Engineering, vol. 35, no. 4, pp. 3821–3840, Apr. 2023.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 127,
+    "type": "p",
+    "text": "[6]  Redis Ltd., \"Redis Documentation — Caching Architecture,\" Redis Documentation, 2024. [Online]. Available: https://redis.io/docs/manual/client-side-caching/. [Accessed: Aug. 2026].",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[6]  Redis Ltd., \"Redis Documentation — Caching Architecture,\" Redis Documentation, 2024. [Online]. Available: https://redis.io/docs/manual/client-side-caching/. [Accessed: Aug. 2026].",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 128,
+    "type": "p",
+    "text": "[7]  Colby Fayock, \"React Query v5 — Getting Started,\" TanStack Query Documentation, 2024. [Online]. Available: https://tanstack.com/query/v5/docs/framework/react/overview. [Accessed: Aug. 2026].",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[7]  Colby Fayock, \"React Query v5 — Getting Started,\" TanStack Query Documentation, 2024. [Online]. Available: https://tanstack.com/query/v5/docs/framework/react/overview. [Accessed: Aug. 2026].",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 129,
+    "type": "p",
+    "text": "[8]  Government of India, \"Digital Personal Data Protection Act, 2023 (DPDP Act),\" Ministry of Electronics and Information Technology, 2023. [Online]. Available: https://www.meity.gov.in/writereaddata/files/Digital Personal Data Protection Act 2023.pdf. [Accessed: Aug. 2026].",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[8]  Government of India, \"Digital Personal Data Protection Act, 2023 (DPDP Act),\" Ministry of Electronics and Information Technology, 2023. [Online]. Available: https://www.meity.gov.in/writereaddata/files/Digital Personal Data Protection Act 2023.pdf. [Accessed: Aug. 2026].",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 130,
+    "type": "p",
+    "text": "[9]  C. Zhu and H. Xiong, \"Mobile Recommendation with Missing Data for Point-of-Interest Services,\" IEEE Transactions on Mobile Computing, vol. 22, no. 1, pp. 204–217, Jan. 2023.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[9]  C. Zhu and H. Xiong, \"Mobile Recommendation with Missing Data for Point-of-Interest Services,\" IEEE Transactions on Mobile Computing, vol. 22, no. 1, pp. 204–217, Jan. 2023.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 131,
+    "type": "p",
+    "text": "[10] Vite, \"Vite — Next Generation Frontend Tooling,\" Vite Documentation, 2024. [Online]. Available: https://vitejs.dev/guide/. [Accessed: Aug. 2026].",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[10] Vite, \"Vite — Next Generation Frontend Tooling,\" Vite Documentation, 2024. [Online]. Available: https://vitejs.dev/guide/. [Accessed: Aug. 2026].",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 132,
+    "type": "p",
+    "text": "[11] E. Gamma, R. Helm, R. Johnson, and J. Vlissides, Design Patterns: Elements of Reusable Object-Oriented Software. Boston, MA, USA: Addison-Wesley, 1994.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[11] E. Gamma, R. Helm, R. Johnson, and J. Vlissides, Design Patterns: Elements of Reusable Object-Oriented Software. Boston, MA, USA: Addison-Wesley, 1994.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 133,
+    "type": "p",
+    "text": "[12] O. Sinnott, \"Virtues of the Haversine,\" Sky and Telescope, vol. 68, no. 2, p. 159, 1984.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[12] O. Sinnott, \"Virtues of the Haversine,\" Sky and Telescope, vol. 68, no. 2, p. 159, 1984.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 134,
+    "type": "p",
+    "text": "[13] R. T. Fielding, \"Architectural Styles and the Design of Network-based Software Architectures,\" Ph.D. dissertation, Dept. Inf. Comput. Sci., Univ. of California Irvine, Irvine, CA, USA, 2000.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[13] R. T. Fielding, \"Architectural Styles and the Design of Network-based Software Architectures,\" Ph.D. dissertation, Dept. Inf. Comput. Sci., Univ. of California Irvine, Irvine, CA, USA, 2000.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 135,
+    "type": "p",
+    "text": "[14] Mongoose, \"Mongoose — Elegant MongoDB Object Modeling for Node.js,\" Mongoose Documentation, 2024. [Online]. Available: https://mongoosejs.com/docs/guide.html. [Accessed: Aug. 2026].",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[14] Mongoose, \"Mongoose — Elegant MongoDB Object Modeling for Node.js,\" Mongoose Documentation, 2024. [Online]. Available: https://mongoosejs.com/docs/guide.html. [Accessed: Aug. 2026].",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 136,
+    "type": "p",
+    "text": "[15] N. Nurseitov, M. Paulson, R. Reynolds, and C. Izurieta, \"Comparison of JSON and XML Data Interchange Formats: A Case Study,\" CAINE, pp. 157–162, 2009.",
+    "align": "None",
+    "drawings_count": 0,
+    "runs": [
+      {
+        "text": "[15] N. Nurseitov, M. Paulson, R. Reynolds, and C. Izurieta, \"Comparison of JSON and XML Data Interchange Formats: A Case Study,\" CAINE, pp. 157–162, 2009.",
+        "bold": null,
+        "italic": null,
+        "underline": null,
+        "font_size": 11.0,
+        "font_color": null
+      }
+    ]
+  },
+  {
+    "index": 137,
+    "type": "sectPr"
+  }
+]
