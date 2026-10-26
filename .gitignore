@@ -12,3 +12,5 @@ logs/
 server/uploads/
 .mongo-data/
 *.tsbuildinfo
+*.pdf
+docs/

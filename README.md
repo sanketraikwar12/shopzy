@@ -75,12 +75,6 @@ npm run audit          # dependency audit with assessed exceptions
 npm run build          # production builds
 ```
 
-### 🎓 Final Project Viva & Defense Guides
-
-The repository includes comprehensive technical viva guides for college presentations:
-- 📄 **[Hinglish Viva Guide (11 Pages)](docs/viva/SHOPZY_Backend_Viva_Guide_Hinglish.pdf)**: Complete Roman-Hindi / Hinglish breakdown of 22 core backend questions, examiner focus, and exact code references.
-- 📄 **[English Technical Defense Guide (17 Pages)](docs/viva/SHOPZY_Backend_Viva_Questions_Answers.pdf)**: University-grade 32-question comprehensive technical manual.
-
 ### With Docker
 
 ```bash
