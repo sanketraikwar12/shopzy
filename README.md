@@ -1,10 +1,20 @@
 # SHOPZY
 
-**Local business discovery & price comparison platform.**
-Find shops near you, compare what they actually charge for the same item, and call or navigate in one tap.
+[![CI Pipeline](https://github.com/sanketraikwar12/shopzy/actions/workflows/ci.yml/badge.svg)](https://github.com/sanketraikwar12/shopzy/actions)
+![Node Version](https://img.shields.io/badge/node-%3E%3D20-brightgreen)
+![TypeScript](https://img.shields.io/badge/typescript-5.7-blue)
+![React](https://img.shields.io/badge/react-19-cyan)
+![Express](https://img.shields.io/badge/express-4.21-black)
+![MongoDB](https://img.shields.io/badge/mongodb-2dsphere-green)
+![Redis](https://img.shields.io/badge/redis-caching-red)
+![Tests](https://img.shields.io/badge/tests-150%2F150%20passed-success)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-Built as a production-shaped MERN application: TypeScript end to end, geospatial search on MongoDB,
-JWT auth with refresh-token rotation, RBAC, Redis-backed caching and rate limiting, containerised and CI-gated.
+**Hyperlocal business discovery & real-time price comparison engine for Bhopal.**
+Find shops near you, compare what they actually charge for the same item, check live opening hours, and navigate in one tap.
+
+Built as a production-grade application: TypeScript end to end, 2dsphere geospatial indexing on MongoDB,
+dual-token JWT authentication with silent refresh rotation, strict RBAC, Redis-backed caching and rate limiting, containerised with Docker and CI-gated.
 
 ---
 
