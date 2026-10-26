@@ -53,10 +53,6 @@ const schema = z.object({
   SEED_ADMIN_PASSWORD: str('Admin@1234'),
 
   TRUST_PROXY: bool(false),
-
-  AI_API_KEY: str(''),
-  AI_MODEL: str('gemini-1.5-flash'),
-  AI_BASE_URL: str(''),
 });
 
 const parsed = schema.safeParse(process.env);

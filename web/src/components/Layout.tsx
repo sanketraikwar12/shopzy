@@ -21,7 +21,6 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation as useRouterLocation, useNavigate } from 'react-router-dom';
 import { LocationPicker } from '@/components/SearchBar';
-import { ShopzyAssistant } from '@/components/ShopzyAssistant';
 import { ScrollToTop, ToastViewport } from '@/components/ui';
 import { initials } from '@/lib/format';
 import { useClickOutside, useDebounced } from '@/lib/hooks';
@@ -396,23 +395,6 @@ export function Layout() {
               >
                 Explore
               </NavLink>
-
-              <NavLink
-                to="/tourist-places"
-                className={({ isActive }) =>
-                  clsx(
-                    'relative py-2 text-[14px] transition-colors select-none flex items-center gap-1.5',
-                    isActive
-                      ? 'text-sky-400 font-medium after:absolute after:-bottom-[19px] after:left-0 after:right-0 after:h-[2px] after:bg-sky-400 after:rounded-full'
-                      : 'text-slate-300 hover:text-white font-normal',
-                  )
-                }
-              >
-                <span>Tourist Places</span>
-                <span className="rounded-full bg-amber-400/20 px-1.5 py-0.5 text-[9px] font-bold text-amber-300 border border-amber-400/30 uppercase tracking-wider">
-                  Bhopal
-                </span>
-              </NavLink>
             </nav>
           </div>
 
@@ -531,22 +513,6 @@ export function Layout() {
               >
                 Explore
               </NavLink>
-
-              <NavLink
-                to="/tourist-places"
-                onClick={() => setMobileOpen(false)}
-                className={({ isActive }) =>
-                  clsx(
-                    'flex items-center justify-between rounded-xl px-3 py-2 text-sm font-medium transition',
-                    isActive ? 'bg-sky-500/15 text-sky-400 font-semibold' : 'text-slate-300 hover:bg-slate-800/60',
-                  )
-                }
-              >
-                <span>Tourist Places</span>
-                <span className="rounded-full bg-amber-400/20 px-1.5 py-0.5 text-[9px] font-bold text-amber-300 border border-amber-400/30 uppercase tracking-wider">
-                  Bhopal
-                </span>
-              </NavLink>
             </div>
           </nav>
         )}
@@ -558,7 +524,6 @@ export function Layout() {
 
       <Footer />
       <ToastViewport />
-      <ShopzyAssistant />
     </div>
   );
 }
@@ -586,7 +551,6 @@ function Footer() {
           <ul className="space-y-2">
             <li><Link to="/" className="text-xs text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">Home</Link></li>
             <li><Link to="/search" className="text-xs text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">Explore</Link></li>
-            <li><Link to="/tourist-places" className="text-xs font-semibold text-sky-600 hover:text-sky-700 dark:text-sky-400 dark:hover:text-sky-300 transition-colors flex items-center gap-1"><span>Tourist Places</span><span className="text-[9px] uppercase px-1 py-0.2 bg-amber-400/20 text-amber-500 rounded">Bhopal</span></Link></li>
             <li><Link to="/categories" className="text-xs text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">Categories</Link></li>
             <li><Link to="/register?role=owner" className="text-xs text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">For Business</Link></li>
             <li><Link to="/about" className="text-xs text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">About</Link></li>

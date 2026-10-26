@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import {
-  AlertCircle,
   BadgeCheck,
   Ban,
   CheckCircle2,
@@ -18,15 +17,12 @@ import {
   Trash2,
   Users,
   XCircle,
-  Bot,
-  Sparkles,
-  Scale,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ShopEditor } from '@/components/ShopEditor';
 import { Badge, EmptyState, LoadingBlock, Modal, Pagination } from '@/components/ui';
-import { formatCount, formatDate, formatINR, titleCase } from '@/lib/format';
+import { formatCount, formatDate, titleCase } from '@/lib/format';
 import { useDebounced, useDocumentMeta } from '@/lib/hooks';
 import {
   useAdminAnalytics,
@@ -39,7 +35,6 @@ import {
   useCreateCategory,
   useDeleteCategory,
   useDeleteShop,
-  useMarketplaceInsights,
   useModerateReview,
   useSetUserRole,
   useSetUserStatus,
@@ -53,7 +48,7 @@ import { useAuth, useToasts } from '@/store';
 import { HoursCard, PhotoManager } from '@/pages/OwnerDashboardPage';
 import type { AdminCategory, AdminShop, UserRole } from '@/types';
 
-type Tab = 'overview' | 'shops' | 'users' | 'reviews' | 'categories' | 'analytics' | 'insights' | 'audit';
+type Tab = 'overview' | 'shops' | 'users' | 'reviews' | 'categories' | 'analytics' | 'audit';
 
 export function AdminPage() {
   useDocumentMeta('Admin panel | SHOPZY', 'Platform administration: verification queue, users and analytics.');
@@ -87,7 +82,6 @@ export function AdminPage() {
             ['reviews', 'Reviews'],
             ['categories', 'Categories'],
             ['analytics', 'Analytics'],
-            ['insights', 'AI Market Insights'],
             ['audit', 'Audit log'],
           ] as const
         ).map(([key, label]) => (
@@ -105,11 +99,6 @@ export function AdminPage() {
             )}
           >
             {label}
-            {key === 'insights' && (
-              <span className="rounded-full bg-sky-100 dark:bg-sky-950/80 px-2 py-0.5 text-xs font-semibold text-sky-700 dark:text-sky-300">
-                New
-              </span>
-            )}
             {key === 'shops' && Boolean(dashboard?.counts.pendingShops) && (
               <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800">
                 {dashboard?.counts.pendingShops} pending
@@ -125,7 +114,6 @@ export function AdminPage() {
       {tab === 'reviews' && <ReviewsTab />}
       {tab === 'categories' && <CategoriesTab />}
       {tab === 'analytics' && <AnalyticsTab />}
-      {tab === 'insights' && <AiMarketInsightsTab />}
       {tab === 'audit' && <AuditTab />}
     </div>
   );
@@ -775,8 +763,12 @@ function ReviewsTab() {
 
 function CategoriesTab() {
   const { data: categories = [], isLoading } = useAdminCategories();
+  const deleteCategory = useDeleteCategory();
+  const push = useToasts((s) => s.push);
   const [editing, setEditing] = useState<AdminCategory | 'new' | null>(null);
-  const [deleting, setDeleting] = useState<AdminCategory | null>(null);
+
+  const { user: me } = useAuth();
+  const isSuperAdmin = me?.role === 'super_admin';
 
   if (isLoading) return <LoadingBlock label="Loading categories…" />;
 
@@ -784,7 +776,7 @@ function CategoriesTab() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-xs text-ink-500">
-          Categories drive search filters, product catalog, and home page tiles. Slugs are generated from the name.
+          Categories drive search filters and the home page tiles. Slugs are generated from the name.
         </p>
         <button type="button" className="btn-primary btn-sm" onClick={() => setEditing('new')}>
           New category
@@ -833,19 +825,26 @@ function CategoriesTab() {
                         onClick={() => setEditing(c)}
                         className="btn btn-sm text-ink-600 hover:bg-ink-100"
                         aria-label={`Edit ${c.name}`}
-                        title="Edit category"
                       >
                         <Pencil size={14} />
                       </button>
-                      <button
-                        type="button"
-                        onClick={() => setDeleting(c)}
-                        className="btn btn-sm text-rose-600 hover:bg-rose-50"
-                        aria-label={`Delete ${c.name}`}
-                        title="Delete category"
-                      >
-                        <Trash2 size={14} />
-                      </button>
+                      {isSuperAdmin && c.isActive && (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            deleteCategory.mutate(c._id, {
+                              onSuccess: () => push(`${c.name} deactivated`, 'success'),
+                              // A 409 here lists how many shops still use it —
+                              // more useful than a generic failure toast.
+                              onError: (err) => push((err as Error).message, 'error'),
+                            })
+                          }
+                          className="btn btn-sm text-rose-600 hover:bg-rose-50"
+                          aria-label={`Deactivate ${c.name}`}
+                        >
+                          <Ban size={14} />
+                        </button>
+                      )}
                     </div>
                   </td>
                 </tr>
@@ -855,146 +854,12 @@ function CategoriesTab() {
         </div>
       )}
 
-      <CategoryModal
-        target={editing}
-        onClose={() => setEditing(null)}
-        onDelete={(cat) => setDeleting(cat)}
-      />
-      <DeleteCategoryModal
-        category={deleting}
-        onClose={() => setDeleting(null)}
-      />
+      <CategoryModal target={editing} onClose={() => setEditing(null)} />
     </div>
   );
 }
 
-function DeleteCategoryModal({
-  category,
-  onClose,
-}: {
-  category: AdminCategory | null;
-  onClose: () => void;
-}) {
-  const deleteCategory = useDeleteCategory();
-  const push = useToasts((s) => s.push);
-  const [permanent, setPermanent] = useState(false);
-
-  useEffect(() => {
-    if (category) {
-      setPermanent(!category.isActive);
-    }
-  }, [category]);
-
-  if (!category) return null;
-
-  const shopCount = category.stats?.activeShopCount ?? 0;
-
-  return (
-    <Modal open onClose={onClose} title={`Delete Category: ${category.name}`} size="md">
-      <div className="space-y-4">
-        {shopCount > 0 ? (
-          <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs text-amber-900 flex items-start gap-2.5">
-            <AlertCircle className="size-5 shrink-0 text-amber-600 mt-0.5" />
-            <div>
-              <p className="font-semibold text-amber-900">Category is currently in use</p>
-              <p className="mt-1 leading-relaxed text-amber-800">
-                There are <strong>{shopCount}</strong> active shop(s) listed under{' '}
-                <strong className="text-amber-950">{category.name}</strong>.
-                To maintain marketplace integrity, please reassign or delete those shops before deleting this category.
-              </p>
-            </div>
-          </div>
-        ) : (
-          <div className="rounded-xl border border-rose-100 bg-rose-50/60 p-4 text-sm text-ink-700">
-            <p>
-              Are you sure you want to delete <strong className="text-ink-900">{category.name}</strong>?
-            </p>
-            <p className="mt-1 text-xs text-ink-500">
-              Slug: <code className="font-mono text-ink-700">{category.slug}</code> · Current Status:{' '}
-              <span className={category.isActive ? 'text-emerald-700 font-medium' : 'text-ink-500 font-medium'}>
-                {category.isActive ? 'Active' : 'Inactive'}
-              </span>
-            </p>
-          </div>
-        )}
-
-        {shopCount === 0 && (
-          <div>
-            {category.isActive ? (
-              <label className="flex items-start gap-2.5 text-xs text-ink-700 cursor-pointer rounded-lg border border-ink-200 p-3 hover:bg-ink-50/50">
-                <input
-                  type="checkbox"
-                  checked={permanent}
-                  onChange={(e) => setPermanent(e.target.checked)}
-                  className="mt-0.5 rounded border-ink-300 text-rose-600 focus:ring-rose-500"
-                />
-                <div>
-                  <span className="font-semibold text-ink-900">Permanently delete from database</span>
-                  <p className="text-ink-500 mt-0.5">
-                    {permanent
-                      ? 'The category record will be completely erased.'
-                      : 'Deactivate category: hides it from public discovery while preserving admin records.'}
-                  </p>
-                </div>
-              </label>
-            ) : (
-              <p className="text-xs text-ink-500">
-                This category is currently inactive. Confirming will permanently remove it from the system.
-              </p>
-            )}
-          </div>
-        )}
-
-        <div className="flex justify-end gap-2 pt-2 border-t border-ink-100">
-          <button type="button" className="btn-secondary" onClick={onClose} disabled={deleteCategory.isPending}>
-            {shopCount > 0 ? 'Close' : 'Cancel'}
-          </button>
-          {shopCount === 0 && (
-            <button
-              type="button"
-              onClick={() => {
-                deleteCategory.mutate(
-                  { id: category._id, permanent: category.isActive ? permanent : true },
-                  {
-                    onSuccess: () => {
-                      push(
-                        permanent || !category.isActive
-                          ? `Category "${category.name}" permanently deleted`
-                          : `Category "${category.name}" deactivated`,
-                        'success',
-                      );
-                      onClose();
-                    },
-                    onError: (err) => push((err as Error).message, 'error'),
-                  },
-                );
-              }}
-              className="btn btn-sm bg-rose-600 hover:bg-rose-700 text-white font-medium inline-flex items-center gap-1.5"
-              disabled={deleteCategory.isPending}
-            >
-              <Trash2 size={14} />
-              {deleteCategory.isPending
-                ? 'Deleting…'
-                : permanent || !category.isActive
-                  ? 'Delete permanently'
-                  : 'Deactivate category'}
-            </button>
-          )}
-        </div>
-      </div>
-    </Modal>
-  );
-}
-
-function CategoryModal({
-  target,
-  onClose,
-  onDelete,
-}: {
-  target: AdminCategory | 'new' | null;
-  onClose: () => void;
-  onDelete?: (category: AdminCategory) => void;
-}) {
+function CategoryModal({ target, onClose }: { target: AdminCategory | 'new' | null; onClose: () => void }) {
   const createCategory = useCreateCategory();
   const updateCategory = useUpdateCategory();
   const push = useToasts((s) => s.push);
@@ -1110,34 +975,17 @@ function CategoryModal({
           Active (visible in search and on the home page)
         </label>
 
-        <div className="flex items-center justify-between gap-2 pt-2 border-t border-ink-100">
-          {existing ? (
-            <button
-              type="button"
-              onClick={() => {
-                onClose();
-                onDelete?.(existing);
-              }}
-              className="btn btn-sm text-rose-600 hover:bg-rose-50 inline-flex items-center gap-1.5"
-            >
-              <Trash2 size={14} />
-              Delete category
-            </button>
-          ) : (
-            <div />
-          )}
-          <div className="flex gap-2">
-            <button type="button" className="btn-secondary" onClick={onClose}>
-              Cancel
-            </button>
-            <button
-              type="submit"
-              className="btn-primary"
-              disabled={createCategory.isPending || updateCategory.isPending}
-            >
-              {existing ? 'Save changes' : 'Create category'}
-            </button>
-          </div>
+        <div className="flex justify-end gap-2 pt-2">
+          <button type="button" className="btn-secondary" onClick={onClose}>
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="btn-primary"
+            disabled={createCategory.isPending || updateCategory.isPending}
+          >
+            {existing ? 'Save changes' : 'Create category'}
+          </button>
         </div>
       </form>
     </Modal>
@@ -1358,127 +1206,3 @@ function AuditTab() {
     </div>
   );
 }
-
-function AiMarketInsightsTab() {
-  const { data, isLoading } = useMarketplaceInsights();
-
-  if (isLoading) return <LoadingBlock label="Analyzing Shopzy marketplace data…" />;
-  if (!data) return null;
-
-  return (
-    <div className="space-y-6">
-      {/* Disclaimer Alert */}
-      <div className="rounded-2xl border border-sky-200 dark:border-sky-900/50 bg-sky-50/70 dark:bg-sky-950/30 p-4 text-xs text-sky-900 dark:text-sky-200 flex items-start gap-3">
-        <Sparkles className="size-5 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
-        <div>
-          <h4 className="font-bold text-sm text-sky-950 dark:text-sky-100">
-            AI Citizen Marketplace Insights
-          </h4>
-          <p className="mt-1 leading-relaxed text-sky-800 dark:text-sky-300">
-            {data.disclaimer}
-          </p>
-        </div>
-      </div>
-
-      {/* Summary KPI Cards */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard
-          icon={<Bot className="size-4" />}
-          label="Catalog Products Analyzed"
-          value={formatCount(data.summary.totalProductsAnalyzed)}
-          hint="From live shop price lists"
-        />
-        <StatCard
-          icon={<Store className="size-4" />}
-          label="Verified Local Shops"
-          value={formatCount(data.summary.totalVerifiedShops)}
-          hint={`${data.summary.totalActiveShops} active in Bhopal`}
-        />
-        <StatCard
-          icon={<Scale className="size-4" />}
-          label="Tracked Categories"
-          value={formatCount(data.categoryPriceVariations.length)}
-          hint="Across all city zones"
-        />
-        <StatCard
-          icon={<Search className="size-4" />}
-          label="Top Citizen Inquiries"
-          value={formatCount(data.topSearchedKeywords.length)}
-          hint="Natural language queries"
-        />
-      </div>
-
-      {/* Price Variations by Category */}
-      <div className="rounded-2xl border border-ink-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-xs">
-        <h3 className="text-base font-bold text-ink-900 dark:text-white flex items-center gap-2">
-          <span>Category Price Variations & Spread</span>
-        </h3>
-        <p className="mt-1 text-xs text-ink-500 dark:text-slate-400">
-          Distribution of minimum, maximum, and average listed prices across Bhopal local shops.
-        </p>
-
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead>
-              <tr className="border-b border-ink-100 dark:border-slate-800 text-ink-400 dark:text-slate-500 uppercase tracking-wider font-semibold">
-                <th className="py-2.5 px-3">Category</th>
-                <th className="py-2.5 px-3 text-right">Items Tracked</th>
-                <th className="py-2.5 px-3 text-right">Lowest Listed Price</th>
-                <th className="py-2.5 px-3 text-right">Highest Listed Price</th>
-                <th className="py-2.5 px-3 text-right">Average Price</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-ink-100 dark:divide-slate-800">
-              {data.categoryPriceVariations.map((cat) => (
-                <tr key={cat.category} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40 transition">
-                  <td className="py-3 px-3 font-semibold capitalize text-ink-900 dark:text-white">
-                    {titleCase(cat.category)}
-                  </td>
-                  <td className="py-3 px-3 text-right font-medium text-ink-600 dark:text-slate-300">
-                    {cat.itemCount} items
-                  </td>
-                  <td className="py-3 px-3 text-right font-bold text-emerald-600 dark:text-emerald-400">
-                    {formatINR(cat.minPrice)}
-                  </td>
-                  <td className="py-3 px-3 text-right font-medium text-ink-700 dark:text-slate-300">
-                    {formatINR(cat.maxPrice)}
-                  </td>
-                  <td className="py-3 px-3 text-right font-semibold text-brand-600 dark:text-brand-400">
-                    {formatINR(cat.avgPrice)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Top Search Demands */}
-      <div className="rounded-2xl border border-ink-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-xs">
-        <h3 className="text-base font-bold text-ink-900 dark:text-white">
-          Most Searched Citizen Products & Requirements
-        </h3>
-        <p className="mt-1 text-xs text-ink-500 dark:text-slate-400">
-          Aggregated search demand patterns helping local merchants identify catalog gaps.
-        </p>
-
-        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          {data.topSearchedKeywords.map((item) => (
-            <div
-              key={item.keyword}
-              className="rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-3 text-center"
-            >
-              <span className="block text-xs font-semibold capitalize text-slate-800 dark:text-white truncate">
-                {item.keyword}
-              </span>
-              <span className="mt-1 inline-block rounded-full bg-sky-100 dark:bg-sky-950 px-2 py-0.5 text-[10px] font-bold text-sky-700 dark:text-sky-300">
-                {item.searches} inquiries
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-

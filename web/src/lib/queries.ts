@@ -20,8 +20,6 @@ import type {
   ShopCard,
   ShopDetail,
   ShopPhoto,
-  AssistantResponse,
-  MarketplaceInsights,
   Suggestion,
   UserRole,
 } from '@/types';
@@ -451,16 +449,11 @@ export function useUpdateCategory() {
   });
 }
 
-/** Admin category deletion. Supports deactivation or permanent deletion query parameter. */
+/** Super admin only. Rejected with a 409 while active shops still use it. */
 export function useDeleteCategory() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async (arg: string | { id: string; permanent?: boolean }) => {
-      const id = typeof arg === 'string' ? arg : arg.id;
-      const permanent = typeof arg === 'object' && arg.permanent;
-      const query = permanent ? '?permanent=true' : '';
-      return (await api.del(`/categories/${id}${query}`)).data;
-    },
+    mutationFn: async (id: string) => (await api.del(`/categories/${id}`)).data,
     onSuccess: () => invalidateCategories(qc),
   });
 }
@@ -477,38 +470,5 @@ export function useAdminAuditLog(params: { page: number; action?: string }) {
     placeholderData: keepPreviousData,
   });
 }
-
-// --- AI Citizen Assistant ---------------------------------------------------
-
-export function useAssistantChat() {
-  return useMutation({
-    mutationFn: async (payload: {
-      message: string;
-      conversationId?: string;
-      location?: { lat?: number; lng?: number; area?: string; city?: string };
-    }) => {
-      const res = await api.post<AssistantResponse>('/ai/assistant', payload);
-      return res.data;
-    },
-  });
-}
-
-export function useResetConversation() {
-  return useMutation({
-    mutationFn: async (conversationId: string) => {
-      const res = await api.post<{ cleared: boolean }>('/ai/reset', { conversationId });
-      return res.data;
-    },
-  });
-}
-
-export function useMarketplaceInsights() {
-  return useQuery({
-    queryKey: ['marketplace-insights'] as const,
-    queryFn: async () => (await api.get<MarketplaceInsights>('/ai/insights')).data,
-    staleTime: 60 * 1000,
-  });
-}
-
 
 

@@ -1,6 +1,8 @@
-import { Plus, Save, Tag, Trash2 } from 'lucide-react';
+import clsx from 'clsx';
+import { Check, Plus, Save, Tag, Trash2 } from 'lucide-react';
 import { useState } from 'react';
-import { FieldError } from '@/components/ui';
+import { FieldError, Spinner } from '@/components/ui';
+import { ApiError } from '@/lib/api';
 import { useCategories, useUpdateShop } from '@/lib/queries';
 import { useToasts } from '@/store';
 import type { Offer, PriceItem, ShopDetail } from '@/types';
@@ -73,18 +75,44 @@ export function ShopEditor({ shop }: { shop: ShopDetail }) {
   const [features, setFeatures] = useState<Record<string, boolean>>({ ...shop.features });
   const [items, setItems] = useState<ItemDraft[]>(() => toItemDrafts(shop.pricing.items));
   const [offers, setOffers] = useState<OfferDraft[]>(() => toOfferDrafts(shop.allOffers ?? shop.offers));
+  const [activeSaving, setActiveSaving] = useState<'basics' | 'items' | 'offers' | null>(null);
+  const [savedSection, setSavedSection] = useState<'basics' | 'items' | 'offers' | null>(null);
+  const [sectionErrors, setSectionErrors] = useState<Record<string, string>>({});
   const [error, setError] = useState('');
 
-  function save(payload: Record<string, unknown>, successMessage: string) {
+  function save(
+    section: 'basics' | 'items' | 'offers',
+    payload: Record<string, unknown>,
+    successMessage: string,
+  ) {
     setError('');
+    setSectionErrors((prev) => ({ ...prev, [section]: '' }));
+    setActiveSaving(section);
+
     updateShop.mutate(payload, {
-      onSuccess: () => push(successMessage, 'success'),
-      onError: (err) => setError((err as Error).message),
+      onSuccess: () => {
+        setActiveSaving(null);
+        setSavedSection(section);
+        push(successMessage, 'success');
+        setTimeout(() => {
+          setSavedSection((curr) => (curr === section ? null : curr));
+        }, 3000);
+      },
+      onError: (err) => {
+        setActiveSaving(null);
+        const msg =
+          err instanceof ApiError && err.details?.length
+            ? err.details.map((d) => d.message).join(' • ')
+            : (err as Error).message;
+        setError(msg);
+        setSectionErrors((prev) => ({ ...prev, [section]: msg }));
+      },
     });
   }
 
   function saveBasics() {
     save(
+      'basics',
       {
         ...basics,
         description: basics.description || undefined,
@@ -104,11 +132,14 @@ export function ShopEditor({ shop }: { shop: ShopDetail }) {
 
     const invalid = cleaned.find((i) => i.price === '' || Number.isNaN(Number(i.price)) || Number(i.price) < 0);
     if (invalid) {
-      setError(`"${invalid.name}" needs a valid price.`);
+      const msg = `"${invalid.name}" needs a valid price.`;
+      setError(msg);
+      setSectionErrors((prev) => ({ ...prev, items: msg }));
       return;
     }
 
     save(
+      'items',
       {
         items: cleaned.map((i) => ({
           name: i.name.trim(),
@@ -129,16 +160,21 @@ export function ShopEditor({ shop }: { shop: ShopDetail }) {
       (o) => o.discountValue === '' || Number.isNaN(Number(o.discountValue)) || Number(o.discountValue) < 0,
     );
     if (invalid) {
-      setError(`"${invalid.title}" needs a valid discount value.`);
+      const msg = `"${invalid.title}" needs a valid discount value.`;
+      setError(msg);
+      setSectionErrors((prev) => ({ ...prev, offers: msg }));
       return;
     }
     const overHundred = cleaned.find((o) => o.discountType === 'percentage' && Number(o.discountValue) > 100);
     if (overHundred) {
-      setError(`"${overHundred.title}" — a percentage discount cannot exceed 100.`);
+      const msg = `"${overHundred.title}" — a percentage discount cannot exceed 100.`;
+      setError(msg);
+      setSectionErrors((prev) => ({ ...prev, offers: msg }));
       return;
     }
 
     save(
+      'offers',
       {
         offers: cleaned.map((o) => ({
           title: o.title.trim(),
@@ -326,48 +362,97 @@ export function ShopEditor({ shop }: { shop: ShopDetail }) {
                   ['acceptsCash', 'Cash'],
                   ['isWheelchairAccessible', 'Wheelchair access'],
                 ] as const
-              ).map(([key, label]) => (
-                <label
-                  key={key}
-                  className="flex cursor-pointer items-center gap-2 rounded-full border border-ink-200 px-3 py-1.5 text-xs font-medium text-ink-700 hover:bg-ink-50"
-                >
-                  <input
-                    type="checkbox"
-                    checked={Boolean(features[key])}
-                    onChange={(e) => setFeatures((f) => ({ ...f, [key]: e.target.checked }))}
-                  />
-                  {label}
-                </label>
-              ))}
+              ).map(([key, label]) => {
+                const isChecked = Boolean(features[key]);
+                return (
+                  <label
+                    key={key}
+                    className={clsx(
+                      'flex cursor-pointer items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors select-none',
+                      isChecked
+                        ? 'border-brand-500 bg-brand-50/80 dark:bg-brand-950/40 text-brand-700 dark:text-brand-300 shadow-xs'
+                        : 'border-ink-200 dark:border-slate-700 text-ink-700 dark:text-slate-300 hover:bg-ink-50 dark:hover:bg-slate-800',
+                    )}
+                  >
+                    <input
+                      type="checkbox"
+                      className="rounded text-brand-600 focus:ring-brand-500"
+                      checked={isChecked}
+                      onChange={(e) => setFeatures((f) => ({ ...f, [key]: e.target.checked }))}
+                    />
+                    {label}
+                  </label>
+                );
+              })}
             </div>
           </fieldset>
         </div>
 
-        <button type="button" className="btn-primary mt-4" onClick={saveBasics} disabled={updateShop.isPending}>
-          <Save size={15} aria-hidden />
-          Save details
-        </button>
+        <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-ink-100 dark:border-slate-800 pt-4">
+          <div className="text-xs text-ink-500 dark:text-slate-400">
+            {sectionErrors.basics ? (
+              <span className="text-rose-600 dark:text-rose-400 font-medium">{sectionErrors.basics}</span>
+            ) : savedSection === 'basics' ? (
+              <span className="inline-flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400">
+                <Check size={15} className="stroke-[2.5]" aria-hidden /> Details saved successfully!
+              </span>
+            ) : (
+              <span>Changes are published instantly to the local search catalog.</span>
+            )}
+          </div>
+
+          <button
+            type="button"
+            className={clsx(
+              'inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all shadow-sm active:scale-[0.98]',
+              savedSection === 'basics'
+                ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-emerald-500/20'
+                : 'bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600',
+              updateShop.isPending && activeSaving === 'basics' && 'opacity-70 cursor-not-allowed',
+            )}
+            onClick={saveBasics}
+            disabled={updateShop.isPending}
+          >
+            {activeSaving === 'basics' && updateShop.isPending ? (
+              <>
+                <Spinner className="size-4 animate-spin text-white" />
+                <span>Saving details…</span>
+              </>
+            ) : savedSection === 'basics' ? (
+              <>
+                <Check size={16} className="stroke-[2.5]" aria-hidden />
+                <span>Saved!</span>
+              </>
+            ) : (
+              <>
+                <Save size={16} aria-hidden />
+                <span>Save details</span>
+              </>
+            )}
+          </button>
+        </div>
       </section>
 
       {/* --- Price list ------------------------------------------------- */}
       <section className="card p-5">
-        <div className="mb-1 flex flex-wrap items-center justify-between gap-2">
-          <h3 className="text-sm font-semibold text-ink-900">Price list ({items.length})</h3>
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h3 className="text-sm font-semibold text-ink-900">Price list ({items.length})</h3>
+            <p className="mt-0.5 text-xs text-ink-500">
+              Items with the same name across shops make price comparison work.
+            </p>
+          </div>
           <button
             type="button"
-            className="btn-ghost text-xs"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-ink-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-ink-700 dark:text-slate-200 hover:bg-ink-50 dark:hover:bg-slate-700 hover:border-ink-300 shadow-xs transition active:scale-[0.98]"
             onClick={() =>
               setItems((rows) => [...rows, { name: '', price: '', comparePrice: '', unit: '', isAvailable: true }])
             }
           >
-            <Plus size={14} aria-hidden />
-            Add item
+            <Plus size={14} className="stroke-[2.5]" aria-hidden />
+            <span>Add item</span>
           </button>
         </div>
-        <p className="mb-4 text-xs text-ink-500">
-          Items with the same name across shops are what make price comparison work. Use the common name for a thing,
-          not a branded variation.
-        </p>
 
         {items.length === 0 ? (
           <p className="rounded-xl bg-ink-50 px-4 py-6 text-center text-sm text-ink-500">
@@ -446,7 +531,7 @@ export function ShopEditor({ shop }: { shop: ShopDetail }) {
                   <button
                     type="button"
                     aria-label={`Remove ${item.name || 'item'}`}
-                    className="mb-1 rounded-lg p-2 text-ink-400 hover:bg-rose-50 hover:text-rose-600"
+                    className="mb-1 rounded-lg p-2 text-ink-400 hover:bg-rose-50 hover:text-rose-600 transition"
                     onClick={() => setItems((rows) => rows.filter((_, i) => i !== idx))}
                   >
                     <Trash2 size={15} aria-hidden />
@@ -457,22 +542,66 @@ export function ShopEditor({ shop }: { shop: ShopDetail }) {
           </ul>
         )}
 
-        <button type="button" className="btn-primary mt-4" onClick={savePriceList} disabled={updateShop.isPending}>
-          <Save size={15} aria-hidden />
-          Save price list
-        </button>
+        <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-ink-100 dark:border-slate-800 pt-4">
+          <div className="text-xs text-ink-500 dark:text-slate-400">
+            {sectionErrors.items ? (
+              <span className="text-rose-600 dark:text-rose-400 font-medium">{sectionErrors.items}</span>
+            ) : savedSection === 'items' ? (
+              <span className="inline-flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400">
+                <Check size={15} className="stroke-[2.5]" aria-hidden /> Price list saved ({items.length} items)!
+              </span>
+            ) : (
+              <span>{items.length} item{items.length === 1 ? '' : 's'} in catalog • Transparent prices attract more buyers.</span>
+            )}
+          </div>
+
+          <button
+            type="button"
+            className={clsx(
+              'inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all shadow-sm active:scale-[0.98]',
+              savedSection === 'items'
+                ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-emerald-500/20'
+                : 'bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600',
+              updateShop.isPending && activeSaving === 'items' && 'opacity-70 cursor-not-allowed',
+            )}
+            onClick={savePriceList}
+            disabled={updateShop.isPending}
+          >
+            {activeSaving === 'items' && updateShop.isPending ? (
+              <>
+                <Spinner className="size-4 animate-spin text-white" />
+                <span>Saving price list…</span>
+              </>
+            ) : savedSection === 'items' ? (
+              <>
+                <Check size={16} className="stroke-[2.5]" aria-hidden />
+                <span>Price list saved!</span>
+              </>
+            ) : (
+              <>
+                <Save size={16} aria-hidden />
+                <span>Save price list</span>
+              </>
+            )}
+          </button>
+        </div>
       </section>
 
       {/* --- Offers ----------------------------------------------------- */}
       <section className="card p-5">
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-          <h3 className="flex items-center gap-2 text-sm font-semibold text-ink-900">
-            <Tag size={15} aria-hidden />
-            Offers ({offers.length})
-          </h3>
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h3 className="flex items-center gap-2 text-sm font-semibold text-ink-900">
+              <Tag size={15} aria-hidden />
+              Offers ({offers.length})
+            </h3>
+            <p className="mt-0.5 text-xs text-ink-500">
+              Discounts and deals visible to nearby shoppers and on your shop page.
+            </p>
+          </div>
           <button
             type="button"
-            className="btn-ghost text-xs"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-ink-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-ink-700 dark:text-slate-200 hover:bg-ink-50 dark:hover:bg-slate-700 hover:border-ink-300 shadow-xs transition active:scale-[0.98]"
             onClick={() =>
               setOffers((rows) => [
                 ...rows,
@@ -480,8 +609,8 @@ export function ShopEditor({ shop }: { shop: ShopDetail }) {
               ])
             }
           >
-            <Plus size={14} aria-hidden />
-            Add offer
+            <Plus size={14} className="stroke-[2.5]" aria-hidden />
+            <span>Add offer</span>
           </button>
         </div>
 
@@ -557,7 +686,7 @@ export function ShopEditor({ shop }: { shop: ShopDetail }) {
                   <button
                     type="button"
                     aria-label={`Remove ${offer.title || 'offer'}`}
-                    className="mb-1 rounded-lg p-2 text-ink-400 hover:bg-rose-50 hover:text-rose-600"
+                    className="mb-1 rounded-lg p-2 text-ink-400 hover:bg-rose-50 hover:text-rose-600 transition"
                     onClick={() => setOffers((rows) => rows.filter((_, i) => i !== idx))}
                   >
                     <Trash2 size={15} aria-hidden />
@@ -568,10 +697,49 @@ export function ShopEditor({ shop }: { shop: ShopDetail }) {
           </ul>
         )}
 
-        <button type="button" className="btn-primary mt-4" onClick={saveOffers} disabled={updateShop.isPending}>
-          <Save size={15} aria-hidden />
-          Save offers
-        </button>
+        <div className="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-ink-100 dark:border-slate-800 pt-4">
+          <div className="text-xs text-ink-500 dark:text-slate-400">
+            {sectionErrors.offers ? (
+              <span className="text-rose-600 dark:text-rose-400 font-medium">{sectionErrors.offers}</span>
+            ) : savedSection === 'offers' ? (
+              <span className="inline-flex items-center gap-1.5 font-medium text-emerald-600 dark:text-emerald-400">
+                <Check size={15} className="stroke-[2.5]" aria-hidden /> Offers saved ({offers.length} active)!
+              </span>
+            ) : (
+              <span>Running special discounts can increase customer discovery by up to 3x.</span>
+            )}
+          </div>
+
+          <button
+            type="button"
+            className={clsx(
+              'inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all shadow-sm active:scale-[0.98]',
+              savedSection === 'offers'
+                ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-emerald-500/20'
+                : 'bg-brand-600 hover:bg-brand-700 active:bg-brand-800 text-white hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600',
+              updateShop.isPending && activeSaving === 'offers' && 'opacity-70 cursor-not-allowed',
+            )}
+            onClick={saveOffers}
+            disabled={updateShop.isPending}
+          >
+            {activeSaving === 'offers' && updateShop.isPending ? (
+              <>
+                <Spinner className="size-4 animate-spin text-white" />
+                <span>Saving offers…</span>
+              </>
+            ) : savedSection === 'offers' ? (
+              <>
+                <Check size={16} className="stroke-[2.5]" aria-hidden />
+                <span>Offers saved!</span>
+              </>
+            ) : (
+              <>
+                <Save size={16} aria-hidden />
+                <span>Save offers</span>
+              </>
+            )}
+          </button>
+        </div>
       </section>
 
       <FieldError message={updateShop.isError ? (updateShop.error as Error).message : undefined} />

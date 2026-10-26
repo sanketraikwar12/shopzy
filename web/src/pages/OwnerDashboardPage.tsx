@@ -15,7 +15,8 @@ import {
 } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Badge, EmptyState, LoadingBlock, Modal, OpenBadge, Spinner } from '@/components/ui';
+import { Badge, EmptyState, FieldError, LoadingBlock, Modal, OpenBadge, Spinner } from '@/components/ui';
+import { ApiError } from '@/lib/api';
 import { LocationPicker } from '@/components/LocationPicker';
 import { ShopEditor } from '@/components/ShopEditor';
 import { formatCount, formatINR, formatTime, openStateLabel, titleCase } from '@/lib/format';
@@ -807,6 +808,14 @@ export function HoursCard({ shop }: { shop: ShopDetail }) {
   );
 }
 
+function sanitizePhone(value: string) {
+  let cleaned = value.replace(/[^\d+]/g, '');
+  if (cleaned.startsWith('+91')) cleaned = cleaned.slice(3);
+  else if (cleaned.startsWith('91') && cleaned.length > 10) cleaned = cleaned.slice(2);
+  cleaned = cleaned.replace(/^0+/, '');
+  return cleaned.replace(/\D/g, '').slice(0, 10);
+}
+
 function CreateShopModal({
   open,
   onClose,
@@ -834,40 +843,82 @@ function CreateShopModal({
     lng: '77.4126',
   });
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   function set<K extends keyof typeof form>(key: K, value: string) {
     setForm((f) => ({ ...f, [key]: value }));
+    if (fieldErrors[key]) {
+      setFieldErrors((prev) => {
+        const next = { ...prev };
+        delete next[key];
+        return next;
+      });
+    }
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError('');
+    const errors: Record<string, string> = {};
+
+    if (form.name.trim().length < 2) {
+      errors.name = 'Shop name must be at least 2 characters';
+    }
+    if (!form.category) {
+      errors.category = 'Please choose a category';
+    }
+    const cleanNumber = form.phone.replace(/\D/g, '');
+    if (!/^[6-9]\d{9}$/.test(cleanNumber)) {
+      errors.phone = 'Enter a valid 10-digit mobile number starting with 6, 7, 8 or 9';
+    }
+    if (form.address.trim().length < 5) {
+      errors.address = 'Street address must be at least 5 characters';
+    }
+    if (!/^\d{6}$/.test(form.pincode.trim())) {
+      errors.pincode = 'Pincode must be exactly 6 digits (e.g. 462001)';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      setError('Please resolve the errors highlighted below.');
+      return;
+    }
+
+    createShop.mutate(
+      {
+        ...form,
+        phone: cleanNumber,
+        pincode: form.pincode.trim(),
+        lat: Number(form.lat),
+        lng: Number(form.lng),
+        landmark: form.landmark || undefined,
+        description: form.description || undefined,
+        tags: [],
+        items: [],
+        offers: [],
+      },
+      {
+        onSuccess: (createdShop) => {
+          push('Shop created — please add your price list now.', 'success');
+          onClose();
+          onCreated?.(createdShop.id);
+        },
+        onError: (err) => {
+          if (err instanceof ApiError && err.details?.length) {
+            setFieldErrors(err.fieldErrors);
+            const messages = err.details.map((d) => d.message).join(' • ');
+            setError(`Validation error: ${messages}`);
+          } else {
+            setError((err as Error).message);
+          }
+        },
+      },
+    );
   }
 
   return (
     <Modal open={open} onClose={onClose} title="List your shop" size="lg">
-      <form
-        className="space-y-4"
-        onSubmit={(e) => {
-          e.preventDefault();
-          setError('');
-          createShop.mutate(
-            {
-              ...form,
-              lat: Number(form.lat),
-              lng: Number(form.lng),
-              landmark: form.landmark || undefined,
-              description: form.description || undefined,
-              tags: [],
-              items: [],
-              offers: [],
-            },
-            {
-              onSuccess: (createdShop) => {
-                push('Shop created — please add your price list now.', 'success');
-                onClose();
-                onCreated?.(createdShop.id);
-              },
-              onError: (err) => setError((err as Error).message),
-            },
-          );
-        }}
-      >
+      <form className="space-y-4" onSubmit={handleSubmit}>
         {error && (
           <div role="alert" className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
             {error}
@@ -878,7 +929,14 @@ function CreateShopModal({
           <label htmlFor="shop-name" className="label">
             Shop name
           </label>
-          <input id="shop-name" value={form.name} onChange={(e) => set('name', e.target.value)} required className="input" />
+          <input
+            id="shop-name"
+            value={form.name}
+            onChange={(e) => set('name', e.target.value)}
+            required
+            className={clsx('input', fieldErrors.name && 'border-rose-400 focus:border-rose-500')}
+          />
+          <FieldError message={fieldErrors.name} />
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
@@ -891,7 +949,7 @@ function CreateShopModal({
               value={form.category}
               onChange={(e) => set('category', e.target.value)}
               required
-              className="input"
+              className={clsx('input', fieldErrors.category && 'border-rose-400 focus:border-rose-500')}
             >
               <option value="">Choose a category…</option>
               {categories.map((c) => (
@@ -900,20 +958,29 @@ function CreateShopModal({
                 </option>
               ))}
             </select>
+            <FieldError message={fieldErrors.category} />
           </div>
           <div>
             <label htmlFor="shop-phone" className="label">
               Contact number
             </label>
-            <input
-              id="shop-phone"
-              inputMode="numeric"
-              value={form.phone}
-              onChange={(e) => set('phone', e.target.value.replace(/\D/g, '').slice(0, 10))}
-              placeholder="9876543210"
-              required
-              className="input"
-            />
+            <div className="flex">
+              <span className="inline-flex items-center rounded-l-xl border border-r-0 border-ink-300 bg-ink-50 px-3 text-sm font-medium text-ink-500">
+                +91
+              </span>
+              <input
+                id="shop-phone"
+                type="tel"
+                inputMode="numeric"
+                value={form.phone}
+                onChange={(e) => set('phone', sanitizePhone(e.target.value))}
+                placeholder="9876543210"
+                required
+                className={clsx('input rounded-l-none', fieldErrors.phone && 'border-rose-400 focus:border-rose-500')}
+              />
+            </div>
+            <p className="mt-1 text-xs text-ink-400">10-digit mobile number (starting with 6-9)</p>
+            <FieldError message={fieldErrors.phone} />
           </div>
         </div>
 
@@ -928,15 +995,23 @@ function CreateShopModal({
             rows={3}
             maxLength={2000}
             placeholder="What do you offer? What makes your shop worth visiting?"
-            className="input resize-none"
+            className={clsx('input resize-none', fieldErrors.description && 'border-rose-400 focus:border-rose-500')}
           />
+          <FieldError message={fieldErrors.description} />
         </div>
 
         <div>
           <label htmlFor="shop-address" className="label">
             Street address
           </label>
-          <input id="shop-address" value={form.address} onChange={(e) => set('address', e.target.value)} required className="input" />
+          <input
+            id="shop-address"
+            value={form.address}
+            onChange={(e) => set('address', e.target.value)}
+            required
+            className={clsx('input', fieldErrors.address && 'border-rose-400 focus:border-rose-500')}
+          />
+          <FieldError message={fieldErrors.address} />
         </div>
 
         <div className="grid gap-3 sm:grid-cols-3">
@@ -944,13 +1019,26 @@ function CreateShopModal({
             <label htmlFor="shop-landmark" className="label">
               Landmark
             </label>
-            <input id="shop-landmark" value={form.landmark} onChange={(e) => set('landmark', e.target.value)} className="input" />
+            <input
+              id="shop-landmark"
+              value={form.landmark}
+              onChange={(e) => set('landmark', e.target.value)}
+              className={clsx('input', fieldErrors.landmark && 'border-rose-400 focus:border-rose-500')}
+            />
+            <FieldError message={fieldErrors.landmark} />
           </div>
           <div>
             <label htmlFor="shop-city" className="label">
               City
             </label>
-            <input id="shop-city" value={form.city} onChange={(e) => set('city', e.target.value)} required className="input" />
+            <input
+              id="shop-city"
+              value={form.city}
+              onChange={(e) => set('city', e.target.value)}
+              required
+              className={clsx('input', fieldErrors.city && 'border-rose-400 focus:border-rose-500')}
+            />
+            <FieldError message={fieldErrors.city} />
           </div>
           <div>
             <label htmlFor="shop-pincode" className="label">
@@ -961,9 +1049,11 @@ function CreateShopModal({
               inputMode="numeric"
               value={form.pincode}
               onChange={(e) => set('pincode', e.target.value.replace(/\D/g, '').slice(0, 6))}
+              placeholder="462001"
               required
-              className="input"
+              className={clsx('input', fieldErrors.pincode && 'border-rose-400 focus:border-rose-500')}
             />
+            <FieldError message={fieldErrors.pincode} />
           </div>
         </div>
 
@@ -995,6 +1085,7 @@ function CreateShopModal({
                 className="input font-mono text-sm"
                 placeholder="23.2599"
               />
+              <FieldError message={fieldErrors.lat} />
             </div>
             <div>
               <label htmlFor="shop-lng" className="label">Longitude</label>
@@ -1006,6 +1097,7 @@ function CreateShopModal({
                 className="input font-mono text-sm"
                 placeholder="77.4126"
               />
+              <FieldError message={fieldErrors.lng} />
             </div>
           </div>
         </fieldset>

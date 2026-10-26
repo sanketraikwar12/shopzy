@@ -35,6 +35,31 @@ const ALLOWLIST = [
       'reachable here, so staying on 7.18.x is the lower-risk position.',
     reviewBy: '2026-11-01',
   },
+  {
+    id: 'GHSA-5p2g-fcmc-qvqq',
+    package: 'image-size',
+    reason:
+      'Offline presentation script devDependency (pptxgenjs in scripts/convert-to-pptx.mjs). ' +
+      'Not part of runtime server or client bundle, never processes user-submitted images.',
+    reviewBy: '2026-12-31',
+  },
+  {
+    id: 'GHSA-w3rx-r6r6-pgpr',
+    package: 'image-size',
+    reason:
+      'Offline presentation script devDependency (pptxgenjs in scripts/convert-to-pptx.mjs). ' +
+      'ICNS parser flaw is unreachable in production or API runtime.',
+    reviewBy: '2026-12-31',
+  },
+  {
+    id: 'GHSA-mrhx-c7xc-m3w5',
+    package: 'zod',
+    reason:
+      'Constrained collection memory exhaustion flaw in Zod v3. Express body-parser payload limits ' +
+      '(100kb/1mb) prevent transmission of oversized arrays, mitigating this attack surface. ' +
+      'Zod v4 upgrade contains major breaking changes to schemas and will be planned in the next release.',
+    reviewBy: '2026-12-31',
+  },
 ];
 
 const allowedIds = new Set(ALLOWLIST.map((a) => a.id));

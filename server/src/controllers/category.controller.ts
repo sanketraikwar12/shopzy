@@ -144,24 +144,6 @@ export const remove = asyncHandler(async (req: Request, res: Response) => {
   const inUse = await Shop.countDocuments({ 'basicInfo.category': category.slug, isActive: true });
   if (inUse > 0) throw ApiError.conflict(`${inUse} active shop(s) still use this category. Reassign them first.`);
 
-  const permanent = String(req.query.permanent) === 'true' || !category.isActive;
-
-  if (permanent) {
-    await Category.findByIdAndDelete(req.params.id);
-    await cache.del('categories:all');
-
-    recordAudit(req, {
-      action: 'category.delete',
-      targetType: 'category',
-      targetId: String(category._id),
-      targetLabel: category.name,
-      before: { name: category.name, slug: category.slug, isActive: category.isActive },
-      after: { deleted: true },
-    });
-
-    return ok(res, { message: `Category "${category.name}" permanently deleted` });
-  }
-
   category.isActive = false;
   await category.save();
   await cache.del('categories:all');
@@ -175,5 +157,5 @@ export const remove = asyncHandler(async (req: Request, res: Response) => {
     after: { isActive: false },
   });
 
-  return ok(res, { message: `Category "${category.name}" deactivated` });
+  return ok(res, { message: 'Category deactivated' });
 });

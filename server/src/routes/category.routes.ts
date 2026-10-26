@@ -32,13 +32,8 @@ router.get('/:slug/shops', validate({ params: slugParam, query: paginationQuery 
 
 router.post('/', requireAuth, requireAdmin, validate({ body: categoryBody }), ctrl.create);
 router.put('/:id', requireAuth, requireAdmin, validate({ params: objectIdParam, body: categoryBody.partial() }), ctrl.update);
-const deleteCategoryQuery = z.object({
-  permanent: z
-    .enum(['true', 'false'])
-    .transform((v) => v === 'true')
-    .optional(),
-});
-
-router.delete('/:id', requireAuth, requireAdmin, validate({ params: objectIdParam, query: deleteCategoryQuery }), ctrl.remove);
+// Deactivating a category affects every shop filed under it, so it is reserved
+// for a super admin even though the other two are open to any admin.
+router.delete('/:id', requireAuth, requireSuperAdmin, validate({ params: objectIdParam }), ctrl.remove);
 
 export default router;

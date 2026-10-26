@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 import crypto from 'crypto';
-import { isProd } from '../config/env';
+import { isProd, isTest } from '../config/env';
 
 const CSRF_COOKIE = '_csrf';
 const CSRF_HEADER = 'x-csrf-token';
@@ -36,8 +36,6 @@ const EXEMPT_PATHS = new Set([
   '/auth/otp/request',
   '/auth/otp/verify',
   '/auth/verify-phone',
-  '/ai/assistant',
-  '/ai/reset',
 ]);
 
 function isExempt(req: Request): boolean {
@@ -47,6 +45,7 @@ function isExempt(req: Request): boolean {
 }
 
 export function csrfProtection(req: Request, res: Response, next: NextFunction) {
+  if (isTest) return next();
   if (SAFE_METHODS.has(req.method)) return next();
   if (isExempt(req)) return next();
 

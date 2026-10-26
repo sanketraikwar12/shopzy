@@ -80,12 +80,6 @@ export const getBySlug = asyncHandler(async (req: Request, res: Response) => {
   const shop = await Shop.findOne({ slug, isActive: true }).lean();
   if (!shop) throw ApiError.notFound('Shop not found');
 
-  void shopService.trackEvent(String(shop._id), 'shop_view', {
-    userId: req.user?.id,
-    sessionId: req.get('x-session-id') ?? undefined,
-    category: shop.basicInfo.category,
-  });
-
   const isOwnerOrAdmin =
     req.user && (String(shop.ownerId) === req.user.id || req.user.role === 'admin' || req.user.role === 'super_admin');
 

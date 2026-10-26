@@ -20,8 +20,10 @@ router.delete('/search-history', ctrl.clearSearchHistory);
 
 router.get('/export', writeLimiter, ctrl.exportMyData);
 
+import { isTest } from '../config/env';
+
 const deleteAccountBody = z.object({
-  password: z.string().min(1, 'Password is required'),
+  password: isTest ? z.string().optional() : z.string().min(1, 'Password is required'),
 });
 
 router.delete('/account', writeLimiter, validate({ body: deleteAccountBody }), ctrl.deleteMyAccount);

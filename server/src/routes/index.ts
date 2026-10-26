@@ -8,7 +8,6 @@ import reviewRoutes from './review.routes';
 import categoryRoutes from './category.routes';
 import userRoutes from './user.routes';
 import adminRoutes from './admin.routes';
-import aiRoutes from './ai.routes';
 import { ok } from '../utils/response';
 
 const router = Router();
@@ -31,6 +30,5 @@ router.use('/reviews', reviewRoutes);
 router.use('/categories', categoryRoutes);
 router.use('/me', userRoutes);
 router.use('/admin', adminRoutes);
-router.use('/ai', aiRoutes);
 
 export default router;

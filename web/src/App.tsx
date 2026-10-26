@@ -26,12 +26,6 @@ const AccountPage = lazy(() => import('@/pages/MiscPages').then((m) => ({ defaul
 const AboutPage = lazy(() => import('@/pages/MiscPages').then((m) => ({ default: m.AboutPage })));
 const BlogPage = lazy(() => import('@/pages/MiscPages').then((m) => ({ default: m.BlogPage })));
 const CategoriesPage = lazy(() => import('@/pages/MiscPages').then((m) => ({ default: m.CategoriesPage })));
-const TouristPlacesPage = lazy(() =>
-  import('@/pages/TouristPlacesPage').then((m) => ({ default: m.TouristPlacesPage })),
-);
-const TouristDetailPage = lazy(() =>
-  import('@/pages/TouristDetailPage').then((m) => ({ default: m.TouristDetailPage })),
-);
 const SavedShopsPage = lazy(() => import('@/pages/MiscPages').then((m) => ({ default: m.SavedShopsPage })));
 const PrivacyPage = lazy(() => import('@/pages/MiscPages').then((m) => ({ default: m.PrivacyPage })));
 const TermsPage = lazy(() => import('@/pages/MiscPages').then((m) => ({ default: m.TermsPage })));
@@ -104,8 +98,6 @@ export function App() {
                 <Route path="shop/:slug" element={<ShopDetailPage />} />
                 <Route path="compare" element={<ComparePage />} />
                 <Route path="categories" element={<CategoriesPage />} />
-                <Route path="tourist-places" element={<TouristPlacesPage />} />
-                <Route path="tourist-places/:slug" element={<TouristDetailPage />} />
                 <Route path="about" element={<AboutPage />} />
                 <Route path="blog" element={<BlogPage />} />
 

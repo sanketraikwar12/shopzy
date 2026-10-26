@@ -82,7 +82,7 @@ export function errorHandler(err: unknown, req: Request, res: Response, _next: N
   if (statusCode >= 500) {
     logger.error(message, { ...logPayload, stack: (err as Error)?.stack });
   } else {
-    logger.warn(message, logPayload);
+    logger.warn(message, { ...logPayload, ...(details ? { details } : {}) });
   }
 
   res.status(statusCode).json({

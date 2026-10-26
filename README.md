@@ -68,12 +68,18 @@ npm run dev            # API + web together
 npm run dev:server     # API only
 npm run dev:web        # web only
 npm run seed           # reload the demo dataset (needs a persistent MONGODB_URI)
-npm test               # 89 API + unit tests
-npm run lint           # ESLint across both workspaces
-npm run typecheck      # strict TypeScript across both workspaces
+npm test               # 150 automated API + unit tests across 7 test suites
+npm run lint           # ESLint across both workspaces (0 errors)
+npm run typecheck      # strict TypeScript across both workspaces (0 errors)
 npm run audit          # dependency audit with assessed exceptions
 npm run build          # production builds
 ```
+
+### 🎓 Final Project Viva & Defense Guides
+
+The repository includes comprehensive technical viva guides for college presentations:
+- 📄 **[Hinglish Viva Guide (11 Pages)](docs/viva/SHOPZY_Backend_Viva_Guide_Hinglish.pdf)**: Complete Roman-Hindi / Hinglish breakdown of 22 core backend questions, examiner focus, and exact code references.
+- 📄 **[English Technical Defense Guide (17 Pages)](docs/viva/SHOPZY_Backend_Viva_Questions_Answers.pdf)**: University-grade 32-question comprehensive technical manual.
 
 ### With Docker
 

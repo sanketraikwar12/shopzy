@@ -22,9 +22,24 @@ export const email = z.string().trim().toLowerCase().email('Please provide a val
 export const phone = z
   .string()
   .trim()
-  .regex(/^[6-9]\d{9}$/, 'Please provide a valid 10-digit Indian mobile number');
+  .transform((v) => {
+    let digits = v.replace(/[\s-]/g, '');
+    if (digits.startsWith('+91')) digits = digits.slice(3);
+    else if (digits.startsWith('91') && digits.length === 12) digits = digits.slice(2);
+    else if (digits.startsWith('0') && digits.length === 11) digits = digits.slice(1);
+    return digits;
+  })
+  .refine((v) => /^[6-9]\d{9}$/.test(v), {
+    message: 'Please provide a valid 10-digit Indian mobile number starting with 6, 7, 8 or 9',
+  });
 
-export const pincode = z.string().regex(/^\d{6}$/, 'Pincode must be 6 digits');
+export const pincode = z
+  .string()
+  .trim()
+  .transform((v) => v.replace(/\s/g, ''))
+  .refine((v) => /^\d{6}$/.test(v), {
+    message: 'Pincode must be 6 digits',
+  });
 
 /**
  * An absolute http(s) URL.
