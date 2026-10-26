@@ -215,11 +215,11 @@ Every endpoint returns the same shape, so the client has exactly one parsing pat
 
 | Layer | Choice | Why |
 | --- | --- | --- |
-| Frontend | React 18 + Vite + TypeScript | Fast HMR, strict typing, tiny production bundles |
+| Frontend | React 19 + Vite 6 + TypeScript 5.7 | Fast HMR, strict typing, tiny production bundles |
 | Server state | TanStack Query | Caching, background refetch, `keepPreviousData` for flicker-free paging |
 | Client state | Zustand | Auth/location/toasts without Redux boilerplate |
 | Styling | Tailwind CSS v4 | Utility-first with a design-token theme; no runtime CSS-in-JS cost |
-| Backend | Node.js + Express + TypeScript | Async I/O suits an I/O-bound search API |
+| Backend | Node.js + Express + TypeScript 5.7 | Async I/O suits an I/O-bound search API |
 | Validation | Zod | One schema validates *and* infers the TypeScript type |
 | Database | MongoDB + Mongoose | Geospatial queries and flexible per-category price lists |
 | Cache | Redis (in-process fallback) | Shared cache and rate-limit counters across replicas |
@@ -262,7 +262,7 @@ shopzy/
 │   │   ├── seed/           Bhopal dataset + loader
 │   │   ├── app.ts          Express assembly
 │   │   └── index.ts        bootstrap + graceful shutdown
-│   ├── tests/              89 tests
+│   ├── tests/              150 tests across 7 test suites
 │   └── Dockerfile
 ├── web/
 │   ├── src/
@@ -273,7 +273,7 @@ shopzy/
 │   │   └── App.tsx         router + guards
 │   ├── nginx.conf
 │   └── Dockerfile
-├── docs/                   ER, DFD, use-case, deployment diagrams
+├── scripts/                audit gate, tooling scripts
 ├── docker-compose.yml
 └── .github/workflows/ci.yml
 ```
